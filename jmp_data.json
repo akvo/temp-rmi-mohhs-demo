@@ -1,0 +1,720 @@
+{
+  "domains": [
+    {
+      "key": "water",
+      "label": "Water",
+      "question": "Service level for drinking water"
+    },
+    {
+      "key": "sanitation",
+      "label": "Sanitation",
+      "question": "Service level for sanitation"
+    },
+    {
+      "key": "hygiene",
+      "label": "Hygiene",
+      "question": "Service level for hand hygiene"
+    },
+    {
+      "key": "waste",
+      "label": "Health-care waste management",
+      "question": "Service level for health-care waste management"
+    },
+    {
+      "key": "cleaning",
+      "label": "Environmental cleaning",
+      "question": "Service level for environmental cleaning"
+    }
+  ],
+  "levels": [
+    "Basic service",
+    "Limited service",
+    "No service"
+  ],
+  "sites": [
+    {
+      "name": "Ailinglaplap - Woja Health Center",
+      "uuid": "84603fff-80d2-455f-8642-131f59fa6124",
+      "atoll": "Ailinglaplap",
+      "island": "Woja",
+      "gps": {
+        "lat": 7.416519593000032,
+        "lon": 168.5529666576988
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Ailuk - Ailuk Health Center",
+      "uuid": "a69f9d86-852c-47ca-a460-c910d04d2b29",
+      "atoll": "Ailuk",
+      "island": "Ailuk",
+      "gps": {
+        "lat": 10.219740065000053,
+        "lon": 169.9818957061301
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Arno - Ine Health Center",
+      "uuid": "0df7d181-4a2a-453d-bac0-7028a82fbd6c",
+      "atoll": "Arno",
+      "island": "Ine",
+      "gps": {
+        "lat": 6.976031707500056,
+        "lon": 171.7124693506645
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Aur - Aur Health Center",
+      "uuid": "283a2968-bc9f-4859-9fac-d99dbed0834e",
+      "atoll": "Aur",
+      "island": "Aur",
+      "gps": {
+        "lat": 8.141784398000055,
+        "lon": 171.17453878685643
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Ebon - Ebon Health Center",
+      "uuid": "d09156e9-f55a-4fda-acf4-72e80bc3981a",
+      "atoll": "Ebon",
+      "island": "Ebon",
+      "gps": {
+        "lat": 4.579112528700305,
+        "lon": 168.6996941042697
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Ebon - Toka Health Center",
+      "uuid": "7e84b7a7-6281-4d0b-abc9-3c4e37d300fb",
+      "atoll": "Ebon",
+      "island": "Toka",
+      "gps": {
+        "lat": 4.635111337500035,
+        "lon": 168.6504502822974
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Jabat - Jabat Health Center",
+      "uuid": "2e323911-b501-4af6-96e3-16a3eab75cbd",
+      "atoll": "Jabat",
+      "island": "Jabat",
+      "gps": {
+        "lat": 7.751187573500033,
+        "lon": 168.976765907734
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Jaluit - Jabwor Health Center",
+      "uuid": "c944682f-3a83-4e3a-b73e-8dcb7507eedc",
+      "atoll": "Jaluit",
+      "island": "Jabwor",
+      "gps": {
+        "lat": 5.89252730100003,
+        "lon": 169.62825590503223
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "yes",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Lae - Lae Health Center",
+      "uuid": "f2c06e75-b5bf-4336-987d-95edf6d76b87",
+      "atoll": "Lae",
+      "island": "Lae",
+      "gps": {
+        "lat": 8.923988872500047,
+        "lon": 166.2691111339348
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Likiep - Likiep Health Center",
+      "uuid": "43aeb9ac-ed41-47c7-934a-5314f4fc48ff",
+      "atoll": "Likiep",
+      "island": "Likiep",
+      "gps": {
+        "lat": 9.82364197000004,
+        "lon": 169.307344560947
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Lip - Lip Health Center",
+      "uuid": "d88bc914-71e2-4712-980d-3ed700c76010",
+      "atoll": "Lip",
+      "island": "Lip",
+      "gps": {
+        "lat": 8.312948425500053,
+        "lon": 167.37953677551462
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Maloelap-Kaben HC",
+      "uuid": "fb39bee6-e06d-4bc7-9207-7db627e22ee2",
+      "atoll": "Maloelap",
+      "island": "Kaben",
+      "gps": {
+        "lat": 8.893026856500057,
+        "lon": 170.8401931977796
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Mejit HC",
+      "uuid": "21b78c94-2543-4d9b-a88e-7efcd354808c",
+      "atoll": "Mejit",
+      "island": "Mejit",
+      "gps": {
+        "lat": 10.284074900500059,
+        "lon": 170.87060244675698
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Mili",
+      "uuid": "ac8a00ca-3f93-4525-bf88-3cc568f8f1f6",
+      "atoll": "Mili",
+      "island": "Enejet",
+      "gps": {
+        "lat": 7.1091395,
+        "lon": 171.3709737
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Namdrik - Namdrik Health Center",
+      "uuid": "9c6e2965-63ea-42e0-979b-e94914fd8b7c",
+      "atoll": "Namdrik",
+      "island": "Namdrik",
+      "gps": {
+        "lat": 5.612431921500047,
+        "lon": 168.12658420783634
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Namu - Majkon Health Center",
+      "uuid": "fff1957c-1052-490a-89fe-20f746290cc3",
+      "atoll": "Namu",
+      "island": "Majkon",
+      "gps": {
+        "lat": 8.154210006500051,
+        "lon": 168.18524148019063
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Ujae - Ujae Health Center",
+      "uuid": "bba61e9f-7fb6-4db3-99c0-14709f1f10f8",
+      "atoll": "Ujae",
+      "island": "Ujae",
+      "gps": {
+        "lat": 8.931288321500062,
+        "lon": 165.76025957546506
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Wotho - Wotho Health Center",
+      "uuid": "30d4dbd1-4dad-4794-86b3-35d1891d8db8",
+      "atoll": "Wotho",
+      "island": "Wotho",
+      "gps": {
+        "lat": 10.16599183650004,
+        "lon": 166.01227492941618
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-H2": "no",
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    },
+    {
+      "name": "Wotje Wotje HC",
+      "uuid": "367eed0b-ed0f-4b3f-837d-4e245f0c9bde",
+      "atoll": "Wotje",
+      "island": "Wotje",
+      "gps": {
+        "lat": 9.452038402000056,
+        "lon": 170.24023593667266
+      },
+      "levels": {
+        "water": "Basic service",
+        "sanitation": "Limited service",
+        "hygiene": "No service",
+        "waste": "Limited service",
+        "cleaning": "No service"
+      },
+      "answers": {
+        "G-W1": "rainwater",
+        "G-W2": "yes",
+        "G-W3": "yes",
+        "G-S1": "pour_flush_toilet",
+        "G-S2": "yes",
+        "G-S3": "no",
+        "G-S4": "no",
+        "G-S5": "no",
+        "G-H1": "no",
+        "G-H2": "no",
+        "G-C1": "partially",
+        "G-C2": "partially",
+        "G-C3": "partially",
+        "G-E1": "no",
+        "G-E2": "none",
+        "G-E3": "not_available"
+      },
+      "meets_jmp_basic_wash": false
+    }
+  ]
+}

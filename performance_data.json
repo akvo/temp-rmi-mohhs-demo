@@ -1,0 +1,2055 @@
+{
+  "generated_at": "2026-07-10",
+  "rounds": [
+    "2025-07",
+    "2025-10",
+    "2026-02"
+  ],
+  "median_latest_score": 64.0,
+  "sites": [
+    {
+      "site_key": "ebon",
+      "atoll": "Ebon",
+      "health_center": "Ebon",
+      "display_name": "Ebon - Ebon Health Center",
+      "mis_datapoint_id": 32,
+      "officers": {
+        "mayor": "Alminson Naisher",
+        "ha": "Kojen Koneilles"
+      },
+      "gps": {
+        "lat": 4.579112528700305,
+        "lon": 168.6996941042697,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 59
+        },
+        "2025-10": {
+          "overall": 59
+        },
+        "2026-02": {
+          "overall": 71
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 59,
+      "latest_round": "2026-02",
+      "latest_score": 71,
+      "improvement_pts": 12,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Add return visit to NCD register and use for follow-up of patients",
+            "Make registry for <5yo and use for follow-up of children",
+            "Order Vit A and Albendazole and do school program including physical exam, as soon as possible",
+            "Clean out junk boxes, sink, around windows, clean doors",
+            "Use new antenatal care forms",
+            "Order pregnancy wheel, measuring tape for prenatal care"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements",
+            "Provide two doors (bathroom, pharmacy) and 6 door knobs in clinic"
+          ],
+          "oihcs": [
+            "Provide water pump",
+            "Provide SSB radio",
+            "Solar system for electricity",
+            "Provide layout ideas for Mayor to complete new building next to HC"
+          ]
+        },
+        "2026-02_status": null,
+        "2026-02_new_plan": {
+          "ha": [
+            "Maintain cold box (instructions on lid). Monitor temp in logbook (2nd request)",
+            "Organize meds and discard expired, including vaccines (2nd request)",
+            "Fix hole in wall - living room",
+            "Unpack boxes of meds & supplies",
+            "Organize meds on shelves",
+            "Restart school programs and Well Child Checkups for 0-5yo",
+            "Provide follow-up appointments for NCD and well child and ANC, and follow-up all No-shows."
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements- (2nd request)",
+            "Fix or replace 3 doors & knobs (shower, back door, pharmacy door)"
+          ],
+          "oihcs": [
+            "Water pump, pipes, connecting parts"
+          ]
+        },
+        "ai_summary": "No Oct 2025 action items have a recorded Feb 2026 status for this site. The new Feb 2026 plan's top priorities: Maintain cold box (instructions on lid). Monitor temp in logbook (2nd request); Organize meds and discard expired, including vaccines (2nd request).",
+        "data_quality_note": "Feb 2026 status doc's 'Ebon (Ebon)' row duplicates Ebon-Toka's Oct 2025 action list verbatim (source data-entry issue) — status omitted rather than misattributed. New Feb 2026 plan text may have the same duplication; treat with caution."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "namdrik",
+      "atoll": "Namdrik",
+      "health_center": "Namdrik",
+      "display_name": "Namdrik - Namdrik Health Center",
+      "mis_datapoint_id": 33,
+      "officers": {
+        "mayor": "Tawe Clement",
+        "ha": "Harris Harris"
+      },
+      "gps": {
+        "lat": 5.612431921500047,
+        "lon": 168.12658420783634,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 19
+        },
+        "2025-10": {
+          "overall": 20
+        },
+        "2026-02": {
+          "overall": 31
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 19,
+      "latest_round": "2026-02",
+      "latest_score": 31,
+      "improvement_pts": 12,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Follow local government directions for improvement"
+          ],
+          "local_govt": [
+            "Local govt to supervise HA closely- to work on multiple improvement items and bring up performance score"
+          ],
+          "oihcs": [
+            "Stand by to assist local government to exercise supervision of HA"
+          ]
+        },
+        "2026-02_status": null,
+        "2026-02_new_plan": {
+          "ha": [
+            "Add return visit to NCD register and use for follow-up of patients (2nd Request)",
+            "Make registry for <5yo and School Children & use for follow-up of children (2nd Request)",
+            "Do school program including physical exam, (2nd Request)",
+            "Clean out junk boxes, sink, around windows, clean doors (2nd Request)",
+            "Cut weeds, clean junk from outside"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements (2nd Request)",
+            "Provide 4 doors (bathroom, pharmacy) and 6 door knobs in clinic (2nd Request)",
+            "Fix crack in wall on outside of facility",
+            "Fix and replace toilet and shower",
+            "Railey to check with Mayor if he wants to verify HA time sheets"
+          ],
+          "oihcs": [
+            "Provide water pump (2nd Request)",
+            "Provide SSB radio (2nd Request)",
+            "Check with Secretary Matu if Mayor’s delegate can verify time sheet before we pay it."
+          ]
+        },
+        "ai_summary": "No Oct 2025 action items have a recorded Feb 2026 status for this site. The new Feb 2026 plan's top priorities: Add return visit to NCD register and use for follow-up of patients (2nd Request); Make registry for <5yo and School Children & use for follow-up of children (2nd Request).",
+        "data_quality_note": "Feb 2026 status doc's 'Namrik' row duplicates Ebon's Oct 2025 action list verbatim (source data-entry issue) — status omitted rather than misattributed. New Feb 2026 plan text has the same duplication; treat with caution."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "jaluit_jabor",
+      "atoll": "Jaluit",
+      "health_center": "Jabor",
+      "display_name": "Jaluit - Jabwor Health Center",
+      "mis_datapoint_id": 34,
+      "officers": {
+        "mayor": "Rostina Morris",
+        "ha": "Elmon Joshua"
+      },
+      "gps": {
+        "lat": 5.89252730100003,
+        "lon": 169.62825590503223,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 85
+        },
+        "2025-10": {
+          "overall": 73
+        },
+        "2026-02": {
+          "overall": 63
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 85,
+      "latest_round": "2026-02",
+      "latest_score": 63,
+      "improvement_pts": -22,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Clear out boxes in front of door",
+            "Better cleaning of toilet and HC rooms",
+            "Do school program ASAP",
+            "Fix floors when floor tiles provided"
+          ],
+          "local_govt": [
+            "Replace emergency door",
+            "Prepare living space for Nurse Practitioner",
+            "Request to replace broken door in Imroj HC",
+            "Meet with health assistant at least one time per month to supervise and work on improvements (Create health council or invite HA to municipal council meetings)"
+          ],
+          "oihcs": [
+            "Request new sink table top",
+            "Starlink replacement or renew V-Sat",
+            "Provide floor tiles",
+            "Dental Chair request",
+            "Window screens provide",
+            "Patient bed (3)",
+            "Bicycle for Imiej (request 2 for council and HA)",
+            "Paint Imroj (2 gal inter; 2 gal exterior)",
+            "Aircon units (2 clinic; 2 accomodation)",
+            "Swat team for PEN, WCC, ANC, Case finding/registries"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Clear out boxes in front of ER door",
+              "done": false
+            },
+            {
+              "item": "Better cleaning of toilet and HC rooms",
+              "done": true
+            },
+            {
+              "item": "Do school program ASAP",
+              "done": false
+            },
+            {
+              "item": "Fix floors when floor tiles provided",
+              "done": null
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Replace emergency door",
+              "done": false
+            },
+            {
+              "item": "Request to replace broken door in Imroj HC",
+              "done": false
+            },
+            {
+              "item": "Prepare living space for Nurse Practitioner",
+              "done": false
+            },
+            {
+              "item": "Meet with health assistants at least one time per month to supervise and work on improvements (Create health council or invite HA to municipal council meetings",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Stand by to assist local government to exercise supervision of HA",
+              "done": null
+            },
+            {
+              "item": "Request new sink table top",
+              "done": false
+            },
+            {
+              "item": "Starlink replacement or renew V-Sat",
+              "done": true
+            },
+            {
+              "item": "Provide floor tiles & Glue",
+              "done": null
+            },
+            {
+              "item": "Dental Chair",
+              "done": false
+            },
+            {
+              "item": "Front window",
+              "done": false
+            },
+            {
+              "item": "Provide Window screens",
+              "done": false
+            },
+            {
+              "item": "Patient bed (3",
+              "done": true
+            },
+            {
+              "item": "Bicycle for Imiej (request 2 for council and HA",
+              "done": false
+            },
+            {
+              "item": "Paint Imroj (2 gal inter; 2 gal exterior",
+              "done": false
+            },
+            {
+              "item": "Aircon units (2 clinic; 2 accomodation",
+              "done": false
+            },
+            {
+              "item": "Swat team for PEN, WCC, ANC, Case finding/registries",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Clear out boxes in front of ER door (2nd request)",
+            "Do school program ASAP (2nd request)"
+          ],
+          "local_govt": [
+            "Replace emergency door (2nd request)",
+            "Replace broken door in Imroj HC (2nd Req)",
+            "Meet with health assistants at least one time per month to supervise and work on improvements (2nd Request)"
+          ],
+          "oihcs": [
+            "Request new sink table top (2nd Request)",
+            "Dental Chair (2nd Request)",
+            "Aircon units (2 clinic; 2 accomodation) (2nd Request)"
+          ]
+        },
+        "ai_summary": "Of the 17 Oct 2025 action items with a recorded Feb 2026 status, 3 (18%) were completed. The new Feb 2026 plan's top priorities: Clear out boxes in front of ER door (2nd request); Do school program ASAP (2nd request)."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "ailinglaplap_woja",
+      "atoll": "Ailinglaplap",
+      "health_center": "Woja",
+      "display_name": "Ailinglaplap - Woja Health Center",
+      "mis_datapoint_id": 35,
+      "officers": {
+        "mayor": "Riming Ring",
+        "ha": "Weston Elji"
+      },
+      "gps": {
+        "lat": 7.416519593000032,
+        "lon": 168.5529666576988,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 67
+        },
+        "2025-10": {
+          "overall": 51
+        },
+        "2026-02": {
+          "overall": 73
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 67,
+      "latest_round": "2026-02",
+      "latest_score": 73,
+      "improvement_pts": 6,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Order Vit A, Albendazole and do School program",
+            "Clean bathroom and floors",
+            "Put all HTN, DM in Registry, use registry to guide outreach for no-shows",
+            "Empty Sharps containerà burn pit"
+          ],
+          "local_govt": [
+            "Fix Door Knobs (2) and Doors (2)",
+            "Fix Table top to get termites out of health center",
+            "Meet with health assistant at least one time per month to supervise and work on improvements"
+          ],
+          "oihcs": [
+            "Fix electricity to health center",
+            "Fix water to health center (need pump)",
+            "Starlink install"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Make registries with all NCD patients and another for <5yo children",
+              "done": true
+            },
+            {
+              "item": "Use registries to identify patients needing home f/u",
+              "done": true
+            },
+            {
+              "item": "Post community profile in HC",
+              "done": true
+            },
+            {
+              "item": "Clean sink, floor and toilet",
+              "done": true
+            },
+            {
+              "item": "Unpack boxes and organize meds on shelves",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements",
+              "done": true
+            },
+            {
+              "item": "Provide 4 door frames- 2 for facility and 2 for toilet and shower",
+              "done": false
+            },
+            {
+              "item": "Repair cement water catchment",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Repair electric (two batteries needed",
+              "done": true
+            },
+            {
+              "item": "Improve delivery of ordered supplies",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Make registries for <5yo children (2nd Request)",
+            "Start School Program and record record",
+            "Support start-up of MHCD practice"
+          ],
+          "local_govt": [
+            "Provide 4 door frames, 1 door knob - 2 for facility and 2 for toilet and shower  (2nd Request)",
+            "Repair cement water catchment  (2nd Request)",
+            "Check with Mayor if agrees to provide free driver and boat for MHCD (Rosita) to provide reproductive health services to all Alinglaplap HCs",
+            "Provide police officers chaperone to MHCD when travelling if needed and assist women referred for domestic violence by MHCD",
+            "Provide plumbing supplies (not including water pump)",
+            "Provide and install aircon into pharmacy room with inverter and batteries"
+          ],
+          "oihcs": [
+            "Logistics and payments for MHCD travel and coordinate with Councilman Romeo Katol (phone:",
+            "Check aircon before next trip"
+          ]
+        },
+        "ai_summary": "Of the 10 Oct 2025 action items with a recorded Feb 2026 status, 8 (80%) were completed. The new Feb 2026 plan's top priorities: Make registries for <5yo children (2nd Request); Start School Program and record record."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "jabat",
+      "atoll": "Jabat",
+      "health_center": "Jabat",
+      "display_name": "Jabat - Jabat Health Center",
+      "mis_datapoint_id": 36,
+      "officers": {
+        "mayor": "Nai Naisher",
+        "ha": "Jounran Journran"
+      },
+      "gps": {
+        "lat": 7.751187573500033,
+        "lon": 168.976765907734,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 74
+        },
+        "2025-10": {
+          "overall": 61
+        },
+        "2026-02": {
+          "overall": 79
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 74,
+      "latest_round": "2026-02",
+      "latest_score": 79,
+      "improvement_pts": 5,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Make registries with all NCD patients and another for <5yo children",
+            "Use registries to identify patients needing home f/u",
+            "Post community profile in HC",
+            "Clean sink, floor and toilet",
+            "Unpack boxes and organize meds on shelves"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements",
+            "Provide 4 door frames- 2 for facility and 2 for toilet and shower",
+            "Repair cement water catchment"
+          ],
+          "oihcs": [
+            "Repair electric (two batteries needed)",
+            "Improve delivery of ordered supplies",
+            "Check if we can provide substitute HA when we transfer Juaran to Alinglaplap coverage"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Start NCD and preschool child registires",
+              "done": false
+            },
+            {
+              "item": "including return visits use for guiding outreach",
+              "done": null
+            },
+            {
+              "item": "Clean floors, toilet, sink better",
+              "done": true
+            },
+            {
+              "item": "Unpack boxes. Organize meds and supplies on shelves in clinic",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with HA at least 1X each month to supervise, assist with community programs (like school program",
+              "done": true
+            },
+            {
+              "item": "Repair cement water catchment tank",
+              "done": false
+            },
+            {
+              "item": "Fix 4 door frames (two in clinic, one in toilet, one in shower",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "2 Batteries needed- 1 for cold box and one for general electricity",
+              "done": true
+            },
+            {
+              "item": "Check if we can provide substitute HA when we transfer Juaran to Alinglaplap coverage",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Start NCD and preschool child registires, including return visits- use for guiding outreach (Partly done, now to complete)",
+            "Case Finding→ Registries",
+            "Prepare community profile",
+            "Start School program",
+            "Health promotion in school or church",
+            "Start weekly cold box maintenance"
+          ],
+          "local_govt": [
+            "Repair cement water catchment tank (2nd Request)",
+            "Fix 4 door frames (two in clinic, one in toilet, one in shower) (2nd Request)"
+          ],
+          "oihcs": [
+            "Check if Startlink can be changed to unlimited plan if community shares cost (and let Jabat know)",
+            "Water pump and valves"
+          ]
+        },
+        "ai_summary": "Of the 8 Oct 2025 action items with a recorded Feb 2026 status, 5 (62%) were completed. The new Feb 2026 plan's top priorities: Start NCD and preschool child registires, including return visits- use for guiding outreach (Partly done, now to complete); Case Finding→ Registries."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "namu_majkon",
+      "atoll": "Namu",
+      "health_center": "Majkon",
+      "display_name": "Namu - Majkon Health Center",
+      "mis_datapoint_id": 37,
+      "officers": {
+        "mayor": "Kemilang Kabua",
+        "ha": "Oktan Timothy"
+      },
+      "gps": {
+        "lat": 8.154210006500051,
+        "lon": 168.18524148019063,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 80
+        },
+        "2025-10": {
+          "overall": 76
+        },
+        "2026-02": {
+          "overall": 88
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 80,
+      "latest_round": "2026-02",
+      "latest_score": 88,
+      "improvement_pts": 8,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Complete case finding for NCD, Children< 5yo and add to registry books (include return visits)",
+            "Post community profile",
+            "Unpack boxes, organize meds"
+          ],
+          "local_govt": [
+            "Ship Starlink (HA can install)",
+            "Ship water pump (HA can install)"
+          ],
+          "oihcs": [
+            "Consider making health council (or can continue to meet quarterly with HA)",
+            "Fix loose tiles in floor"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Improve registries for NCD, Well Child, School",
+              "done": false
+            },
+            {
+              "item": "Community profile and case finding",
+              "done": false
+            },
+            {
+              "item": "Unpack boxes, organize meds on shelves",
+              "done": true
+            },
+            {
+              "item": "Post clinical hours",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Local council- Meet with health assistant at least one time per month to supervise and work on improvements",
+              "done": true
+            },
+            {
+              "item": "Replace roof nails",
+              "done": false
+            },
+            {
+              "item": "Order and fix floor tiles",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Fix electricity to health center",
+              "done": true
+            },
+            {
+              "item": "Water pump",
+              "done": false
+            },
+            {
+              "item": "Starlink to  install",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Enter all NCD, Well Child, School and Other patients into new Registry Book, and begin using to identify No Shows for follow-up",
+            "Do school program",
+            "Start using new ANC form and Order Forms for essential meds and supplies",
+            "Weekly maintenance of cold box"
+          ],
+          "local_govt": [
+            "Fix floor tiles",
+            "Fix broken window/frames",
+            "Place new sink in clinic room"
+          ],
+          "oihcs": [
+            "Provide water pump",
+            "Install new inverter to replace non-functional inverter"
+          ]
+        },
+        "ai_summary": "Of the 10 Oct 2025 action items with a recorded Feb 2026 status, 5 (50%) were completed. The new Feb 2026 plan's top priorities: Enter all NCD, Well Child, School and Other patients into new Registry Book, and begin using to identify No Shows for follow-up; Do school program."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "lip",
+      "atoll": "Lip",
+      "health_center": "Lip",
+      "display_name": "Lip - Lip Health Center",
+      "mis_datapoint_id": 38,
+      "officers": {
+        "mayor": "Winlan Sheet",
+        "ha": "Joe Noka"
+      },
+      "gps": {
+        "lat": 8.312948425500053,
+        "lon": 167.37953677551462,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 21
+        },
+        "2025-10": {
+          "overall": 30
+        },
+        "2026-02": {
+          "overall": 58
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 21,
+      "latest_round": "2026-02",
+      "latest_score": 58,
+      "improvement_pts": 37,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Post clinic hours on the from",
+            "Make sharp container empty before 3/4 when it get full",
+            "Clean sinks",
+            "Start using NCD and pre-school registries include return visit and do outreachy if paitient miss return appointment"
+          ],
+          "local_govt": [
+            "Meet with HA every month to supervise, trouple shoot problem, help organize community events",
+            "Fix toilet"
+          ],
+          "oihcs": [
+            "Fix eclectricity",
+            "Fix water supply"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Follow local government directions for improvement→",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Local govt to supervise HA closely- to work on multiple improvement items and bring up performance score→",
+              "done": true
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Stand by to assist local government to exercise supervision of HA→",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "1-Put all NCD patients, Children < 5yo, School Children and Leprosy patients into new registry book, and use book to follow-up No Shows.",
+            "Contact Dr Ken and ChoCho- be sure you get Leprosy patient names, treatment plans and meds to restart treatment",
+            "Remove rust from sink",
+            "Clean door stains and fingerprints",
+            "Organize meds on shelves (same as new order sheet)",
+            "Start using new order sheet and ANC record",
+            "Report deaths and births (even if # is 0)"
+          ],
+          "local_govt": [
+            "Fix leaks in roof",
+            "Provide 2 doors and 3 door knobs"
+          ],
+          "oihcs": [
+            "Contact Dr ChoCho and Ken to provide names, meds, treatment cards and instructions to be sure to f/u leprosy patients",
+            "Check if pump under sink is working now with electricity",
+            "Check Lib policies:",
+            "If HA Joe on leave can another nurse or HA substitute (e.g. Santo HA)",
+            "Is Ebeye PH or Majuro PH responsible for Lib?",
+            "Send bolts for new beds (4 long bolts for railings for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 3 Oct 2025 action items with a recorded Feb 2026 status, 3 (100%) were completed. The new Feb 2026 plan's top priorities: 1-Put all NCD patients, Children < 5yo, School Children and Leprosy patients into new registry book, and use book to follow-up No Shows.; Contact Dr Ken and ChoCho- be sure you get Leprosy patient names, treatment plans and meds to restart treatment."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "ujae",
+      "atoll": "Ujae",
+      "health_center": "Ujae",
+      "display_name": "Ujae - Ujae Health Center",
+      "mis_datapoint_id": 39,
+      "officers": {
+        "mayor": "Morrison James Jr",
+        "ha": "Merina Riketa"
+      },
+      "gps": {
+        "lat": 8.931288321500062,
+        "lon": 165.76025957546506,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 30
+        },
+        "2025-10": {
+          "overall": 40
+        },
+        "2026-02": {
+          "overall": 60
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 30,
+      "latest_round": "2026-02",
+      "latest_score": 60,
+      "improvement_pts": 30,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Post clinic hours outside of health center",
+            "Set up and use registry books for NCD, Children < 5yo Antenatal, family planning"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)",
+            "Fix roof leak"
+          ],
+          "oihcs": [
+            "Replace doors (3) and door knobs (7)",
+            "Increase support visits to 4/year",
+            "Repair electrical system",
+            "Provide SSB radio and Starlink",
+            "Fix water connections to health center"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Post clinic hours outside of health center",
+              "done": true
+            },
+            {
+              "item": "Set up and use registry books for NCD, Children < 5yo Antenatal, family planning",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings",
+              "done": true
+            },
+            {
+              "item": "Fix roof leak",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Replace doors (3) and door knobs (7",
+              "done": false
+            },
+            {
+              "item": "Repair electrical system",
+              "done": true
+            },
+            {
+              "item": "Provide Starlink",
+              "done": true
+            },
+            {
+              "item": "Fix water connections to health center",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Put names of all NCD patients, <5yo patients, school children into new registry book (use for outreach to No-show patients",
+            "Conduct School program in March.",
+            "Clean bathrooms, window frames, exam rooms",
+            "Organize meds by class on shelves"
+          ],
+          "local_govt": [
+            "Fix roof leaks (2nd Request)",
+            "Fix ceiling in hall",
+            "Paint inside and outside walls (2nd Request)",
+            "Install new toilet"
+          ],
+          "oihcs": [
+            "Replace doors (3) and door knobs (7)  (2nd Request)",
+            "New water pump (110V ac) and Fix water connections to health center (2nd Request)",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 8 Oct 2025 action items with a recorded Feb 2026 status, 4 (50%) were completed. The new Feb 2026 plan's top priorities: Put names of all NCD patients, <5yo patients, school children into new registry book (use for outreach to No-show patients; Conduct School program in March.."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "lae",
+      "atoll": "Lae",
+      "health_center": "Lae",
+      "display_name": "Lae - Lae Health Center",
+      "mis_datapoint_id": 40,
+      "officers": {
+        "mayor": "Telmong Kabua",
+        "ha": "Akji Langbata"
+      },
+      "gps": {
+        "lat": 8.923988872500047,
+        "lon": 166.2691111339348,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 26
+        },
+        "2025-10": {
+          "overall": 47
+        },
+        "2026-02": {
+          "overall": 73
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 26,
+      "latest_round": "2026-02",
+      "latest_score": 73,
+      "improvement_pts": 47,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Keep line list of outpatients seen in clinic",
+            "Post clinic hours on outside door",
+            "Make and use registries for NCD, Children< 5yo, Antenatal and Family Planning"
+          ],
+          "local_govt": [
+            "Establish Health Council (or invite health assistant to regular Local Council meetings (for supervision of HA and for assistance in community programs)",
+            "Fix roof leak",
+            "Patch cracks in walls",
+            "Fix doors"
+          ],
+          "oihcs": [
+            "Fix electrical system (including solar panels, battery)",
+            "Fix water supply (including pump)",
+            "Provide Starlink",
+            "Provide cold chain box"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Keep line list of outpatients seen in clinic",
+              "done": false
+            },
+            {
+              "item": "Community Profile",
+              "done": true
+            },
+            {
+              "item": "Post clinic hours outside health center",
+              "done": true
+            },
+            {
+              "item": "Complete case finding for NCD, Children< 5yo and add to registry books (include return visits",
+              "done": false
+            },
+            {
+              "item": "Make and use registries for NCD, Children < 5yo, Antenatal and Family Planning with return visit dates to use for outreach",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Consider making health council (or can continue to meet quarterly with HA",
+              "done": true
+            },
+            {
+              "item": "Fix minor problems with the wall crack and roof",
+              "done": false
+            },
+            {
+              "item": "3 Doors (1 for pharmacy and 2 for bathrooms",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Fix electrical system (including solar panel/Electricity",
+              "done": true
+            },
+            {
+              "item": "Ship Starlink (HA can install",
+              "done": true
+            },
+            {
+              "item": "Ship water pump, UNICEF",
+              "done": false
+            },
+            {
+              "item": "Provide cold chain",
+              "done": false
+            },
+            {
+              "item": "Transport (Motor bike",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Put names of NCD, Well Child, School and Others into Registry books",
+            "Unpack boxes, put in order on shelves",
+            "Re-order expired meds, and discard them when new replacements arrive",
+            "Clean bathroom"
+          ],
+          "local_govt": [
+            "Provide paint and paint inside and outside of clinic",
+            "3 Doors (1 for pharmacy and 2 for bathrooms) (2nd Request)"
+          ],
+          "oihcs": [
+            "Provide water pump (2nd Request)",
+            "Provide cold chain (2nd Request)",
+            "Folding white table and 10 chairs",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 13 Oct 2025 action items with a recorded Feb 2026 status, 5 (38%) were completed. The new Feb 2026 plan's top priorities: Put names of NCD, Well Child, School and Others into Registry books; Unpack boxes, put in order on shelves."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "wotho",
+      "atoll": "Wotho",
+      "health_center": "Wotho",
+      "display_name": "Wotho - Wotho Health Center",
+      "mis_datapoint_id": 41,
+      "officers": {
+        "mayor": "Kudo Kabua",
+        "ha": "Tom Briand"
+      },
+      "gps": {
+        "lat": 10.16599183650004,
+        "lon": 166.01227492941618,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 21
+        },
+        "2025-10": {
+          "overall": 35
+        },
+        "2026-02": {
+          "overall": 63
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 21,
+      "latest_round": "2026-02",
+      "latest_score": 63,
+      "improvement_pts": 42,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Keep line list of outpatients seen in clinic",
+            "Discard sharps safely (in burn pit)- empty sharps container when ¾ full",
+            "Keep toilet and toilet area very clean",
+            "Get rid of mice and rats",
+            "Unpack meds from boxes, organize them on shelves",
+            "Start community health promotion activities (and keep record of these)"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)",
+            "Replace door knobs in health center"
+          ],
+          "oihcs": [
+            "Send team for 1 week to assist with case finding, set-up of patient registries, training for vaccinations and NCD PEN care",
+            "Increase support visits to 4/year",
+            "Repair electrical system (need battery and regulator)",
+            "Replace SSB radio",
+            "Fix gutters and water supply"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Keep line list of outpatients seen in clinic",
+              "done": false
+            },
+            {
+              "item": "Discard sharps safely (in burn pit)- empty sharps container when ¾ full",
+              "done": true
+            },
+            {
+              "item": "Keep toilet and toilet area very clean",
+              "done": true
+            },
+            {
+              "item": "Get rid of mice and rats",
+              "done": true
+            },
+            {
+              "item": "Unpack meds from boxes, organize them on shelves",
+              "done": false
+            },
+            {
+              "item": "Start community health promotion activities (and keep record of these",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings",
+              "done": true
+            },
+            {
+              "item": "Replace door knobs in health center",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Send team for 1 week to assist with case finding, set-up of patient registries, training for vaccinations and NCD PEN care",
+              "done": false
+            },
+            {
+              "item": "Repair electrical system (need battery and regulator",
+              "done": true
+            },
+            {
+              "item": "Replace SSB radio",
+              "done": false
+            },
+            {
+              "item": "Fix gutters",
+              "done": true
+            },
+            {
+              "item": "Fix water supply including pump",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Keep line list of outpatients seen in clinic (2nd Request)",
+            "Organize meds on shelves (2nd Request)",
+            "School program before May",
+            "Enter all NCD patients, Well Child Patients, School children into Registries, and use to follow-up No-Shows"
+          ],
+          "local_govt": [
+            "Replace door knobs in health center (2nd Request)"
+          ],
+          "oihcs": [
+            "Provide light bulbs (2nd Request)",
+            "Provide water pump and other plumbing supplies (2nd Request)",
+            "Check if SSB radios should be provided by MOHHS policy",
+            "Send bolts for new beds (4 long bolts for railings for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 13 Oct 2025 action items with a recorded Feb 2026 status, 6 (46%) were completed. The new Feb 2026 plan's top priorities: Keep line list of outpatients seen in clinic (2nd Request); Organize meds on shelves (2nd Request)."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "arno_ine",
+      "atoll": "Arno",
+      "health_center": "Ine",
+      "display_name": "Arno - Ine Health Center",
+      "mis_datapoint_id": 42,
+      "officers": {
+        "mayor": "Baji Danny",
+        "ha": "Jally Enos"
+      },
+      "gps": {
+        "lat": 6.976031707500056,
+        "lon": 171.7124693506645,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-10": {
+          "overall": 67
+        },
+        "2026-02": {
+          "overall": 65
+        }
+      },
+      "baseline_round": "2025-10",
+      "baseline_score": 67,
+      "latest_round": "2026-02",
+      "latest_score": 65,
+      "improvement_pts": -2,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Upack boxes - do not store on floor",
+            "Order supplies needed from OIDS (doppler, measuring tape for ANC, Infant weight scale, scale, pulse oximeter, Pregnancy wheel, laciration set, OB delivery pack",
+            "Restart school program including Vit A, Deworm and physical exam",
+            "Start registries for NCD and children less than 5 yo with return visit column - use to guide outreach."
+          ],
+          "local_govt": [
+            "Need with the HA every month to supervise, check clinic hours and help organize community advance like school program etc.",
+            "Replace termite cabinet"
+          ],
+          "oihcs": []
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Upack boxes - do not store on floor🡪",
+              "done": true
+            },
+            {
+              "item": "Order supplies needed from OIDS (doppler, measuring tape for ANC, Infant weight scale, scale, pulse oximeter, Pregnancy wheel, laciration set, OB delivery pack🡪",
+              "done": true
+            },
+            {
+              "item": "Restart school program including Vit A, Deworm and physical exam🡪",
+              "done": false
+            },
+            {
+              "item": "Start registries for NCD and children less than 5 yo with return visit column - use to guide outreach🡪",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Need with the HA every month to supervise, check clinic hours and help organize community advance like school program etc.-->",
+              "done": true
+            },
+            {
+              "item": "Replace termite cabinet 🡪",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "None",
+              "done": null
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Start using essential meds & supplies new order form",
+            "Order pulse oximeter",
+            "Start well child with physical exam Vit A and deworming with registry",
+            "Restart school program (2nd Request)",
+            "Start registry for NCD and Well child care (2nd Request)",
+            "Clean toilet bowl"
+          ],
+          "local_govt": [
+            "Replace termite cabinet (2nd Request)",
+            "Fix leaking roof on HA lodging",
+            "Cleaning back of the facility covered with the junks, empty can and the long grass."
+          ],
+          "oihcs": [
+            "Activate monthly visit by female HA (Betty)"
+          ]
+        },
+        "ai_summary": "Of the 6 Oct 2025 action items with a recorded Feb 2026 status, 3 (50%) were completed. The new Feb 2026 plan's top priorities: Start using essential meds & supplies new order form; Order pulse oximeter."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "ailuk",
+      "atoll": "Ailuk",
+      "health_center": "Ailuk",
+      "display_name": "Ailuk - Ailuk Health Center",
+      "mis_datapoint_id": 43,
+      "officers": {
+        "mayor": "Dancy Alfred",
+        "ha": "Kori Marshall"
+      },
+      "gps": {
+        "lat": 10.219740065000053,
+        "lon": 169.9818957061301,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 19
+        },
+        "2025-10": {
+          "overall": 44
+        },
+        "2026-02": {
+          "overall": 71
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 19,
+      "latest_round": "2026-02",
+      "latest_score": 71,
+      "improvement_pts": 52,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Do Case finding,",
+            "Put case finding NCD patients and",
+            "< 5yo children into registry books with return visit dates to use for follow-up of patients",
+            "Clean exam rooms;",
+            "Organize meds and supplies"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)",
+            "fix electricity,",
+            "fix roof leaks.",
+            "Provide lock for storage room"
+          ],
+          "oihcs": [
+            "Meeting with Heroko to support School Program",
+            "Provided registry books"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Do Case finding,",
+              "done": false
+            },
+            {
+              "item": "Put case finding NCD patients and",
+              "done": null
+            },
+            {
+              "item": "< 5yo children into registry books with return visit dates to use for follow-up of patients",
+              "done": false
+            },
+            {
+              "item": "Clean exam rooms",
+              "done": true
+            },
+            {
+              "item": "Organize meds and supplies",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings",
+              "done": true
+            },
+            {
+              "item": "fix electricity,",
+              "done": true
+            },
+            {
+              "item": "fix roof leaks.",
+              "done": null
+            },
+            {
+              "item": "Provide lock for storage room",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Meeting with Heroko to support School Program",
+              "done": true
+            },
+            {
+              "item": "Provided registry books",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Do Case finding, (2nd Request)",
+            "Put case finding NCD patients and",
+            "Children less than 5 years into registry books with return visit dates to use for follow-up of patients (2nd Request)",
+            "Re-order expired meds on counter. When new meds arrive then discard expired meds.",
+            "Send order for missing meds and supplies (on inventory lists from our visit). Use new order form",
+            "Clean toilet room"
+          ],
+          "local_govt": [
+            "Fix missing floor tiles",
+            "Replace 4 doors and 2 door knobs.",
+            "Clean or paint for stained doors",
+            "Paint dirty walls inside and outside of clinic",
+            "Fix nails in roof cap to prevent leaks"
+          ],
+          "oihcs": [
+            "Send infant doppler to HA",
+            "Check with HA what missing essential items are needed before next MES visit in May (request of Acting Mayor)",
+            "Launch preventive dental care in Ailuk (request of acting Mayor)",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 9 Oct 2025 action items with a recorded Feb 2026 status, 6 (67%) were completed. The new Feb 2026 plan's top priorities: Do Case finding, (2nd Request); Put case finding NCD patients and."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "likiep",
+      "atoll": "Likiep",
+      "health_center": "Likiep",
+      "display_name": "Likiep - Likiep Health Center",
+      "mis_datapoint_id": 44,
+      "officers": {
+        "mayor": "Nicholas deBrum",
+        "ha": "Brandy Kemlan"
+      },
+      "gps": {
+        "lat": 9.82364197000004,
+        "lon": 169.307344560947,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 52
+        },
+        "2025-10": {
+          "overall": 26
+        },
+        "2026-02": {
+          "overall": 54
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 52,
+      "latest_round": "2026-02",
+      "latest_score": 54,
+      "improvement_pts": 2,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Clean floors, bathrooms",
+            "Start school program",
+            "Community profile",
+            "Do House-to-house Case finding for children < 5yo and NCD patients",
+            "Create registry books for NCD and children < 5yo with return visit dates to use for outreach"
+          ],
+          "local_govt": [
+            "Repair leak in roof",
+            "Install pump, fix toilet (no lever; water not connected)",
+            "Provide batteries, connect electricity",
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)"
+          ],
+          "oihcs": [
+            "Recomment for Timesheets to be submitted by Local Government",
+            "Inform Mayor (Nikki deBrum) of MLT decisions",
+            "Check fees charged by HA for services ($2 visit; $2.50 emerg)- clarify policy",
+            "Generator- provided by OIHCS vs HA?"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Clean floors, bathrooms",
+              "done": true
+            },
+            {
+              "item": "Start school program",
+              "done": false
+            },
+            {
+              "item": "Community profile",
+              "done": false
+            },
+            {
+              "item": "Do House-to-house Case finding for children < 5yo and NCD patients",
+              "done": false
+            },
+            {
+              "item": "Create registry books for NCD and children < 5yo with return visit dates to use for outreach",
+              "done": null
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Repair leak in roof",
+              "done": false
+            },
+            {
+              "item": "Install pump, fix toilet (no lever; water not connected",
+              "done": false
+            },
+            {
+              "item": "Provide batteries, connect electricity",
+              "done": false
+            },
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on - improvements (or invite him to Local Council or Health Council meetings",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Recommend for Timesheets to be submitted by Local Government",
+              "done": true
+            },
+            {
+              "item": "Inform Mayor (Nikki deBrum) of MLT decisions",
+              "done": true
+            },
+            {
+              "item": "Check fees charged by HA for services ($2 visit; $2.50 emerg)-  clarify policy",
+              "done": false
+            },
+            {
+              "item": "Generator- provided by OIHCS vs HA?",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Start school program-(2nd Request)",
+            "Community profile (2nd Request)",
+            "Do House-to-house Case finding for children < 5yo and NCD patients (2nd Request)",
+            "Put names of NCD, Children < 5yo, School, NCD, and Other (disability, home bound, pregnant, etc)",
+            "Use line list for all other visits",
+            "Start well child visits",
+            "Attend clinic on time, every work day",
+            "Stop charging patient fees",
+            "Maintain cold box (instructions on the lid)"
+          ],
+          "local_govt": [
+            "Repair leak in roof (2nd Request)",
+            "Install pump, fix toilet (no lever; water not connected). Fitting for water catchment valve  (2nd Request)",
+            "Meet with health assistant at least one time per month to supervise and work on improvements (2nd Request)",
+            "New doors (10) and door knobs (5)"
+          ],
+          "oihcs": [
+            "Clarify policy  for Timesheets to be submitted by Local Government (2nd Request)",
+            "Inform Mayor (Nikki deBrum) of MLT decisions",
+            "Check fees charged by HA for services ($2 visit; $2.50 emerg)-  clarify policy- (2nd Request)",
+            "Send bolts for new beds (16 short bolts; 8 long bolts for 2 beds)"
+          ]
+        },
+        "ai_summary": "Of the 12 Oct 2025 action items with a recorded Feb 2026 status, 4 (33%) were completed. The new Feb 2026 plan's top priorities: Start school program-(2nd Request); Community profile (2nd Request)."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "mili_enejet",
+      "atoll": "Mili",
+      "health_center": "Enejet",
+      "display_name": "Mili",
+      "mis_datapoint_id": 31,
+      "officers": {
+        "mayor": "Joel Jitiam",
+        "ha": "Brandy Kemlan"
+      },
+      "gps": {
+        "lat": 7.1091395,
+        "lon": 171.3709737,
+        "source": "mis"
+      },
+      "scores": {
+        "2025-10": {
+          "overall": 35
+        },
+        "2026-02": {
+          "overall": 60
+        }
+      },
+      "baseline_round": "2025-10",
+      "baseline_score": 35,
+      "latest_round": "2026-02",
+      "latest_score": 60,
+      "improvement_pts": 25,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [],
+          "local_govt": [
+            "No plan becuase NO actin Mayor present."
+          ],
+          "oihcs": [
+            "Convene planning meeting with Actin Mayor and HA"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "No plan because no acting Mayor present.",
+              "done": null
+            }
+          ],
+          "local_govt": [],
+          "oihcs": [
+            {
+              "item": "Convene planning meeting with Acting Mayor and HA",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Restart school program every 6 month, head-to-toe exam, Vit A and deworming",
+            "Start using ANC form",
+            "Start using new Essential meds and supplies order form",
+            "Check registry book at beginning of every month and outreach to any patient that miss any appointment"
+          ],
+          "local_govt": [
+            "Fix leaky roof (provide new ridge gap)",
+            "Replace 5 doors and 5 door knobs"
+          ],
+          "oihcs": [
+            "Fast track order of meds and supplies that Ruth order but not deliver"
+          ]
+        },
+        "ai_summary": "Of the 1 Oct 2025 action items with a recorded Feb 2026 status, 0 (0%) were completed. The new Feb 2026 plan's top priorities: Restart school program every 6 month, head-to-toe exam, Vit A and deworming; Start using ANC form."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "wotje",
+      "atoll": "Wotje",
+      "health_center": "Wotje",
+      "display_name": "Wotje Wotje HC",
+      "mis_datapoint_id": 8,
+      "officers": {
+        "mayor": "Rithin Lajar",
+        "ha": "Jackin Robert"
+      },
+      "gps": {
+        "lat": 9.452038402000056,
+        "lon": 170.24023593667266,
+        "source": "geojson_centroid"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 42
+        },
+        "2025-10": {
+          "overall": 51
+        },
+        "2026-02": {
+          "overall": 73
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 42,
+      "latest_round": "2026-02",
+      "latest_score": 73,
+      "improvement_pts": 31,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Do House-to-House Case finding",
+            "Put case finding NCD patients and  NCD patients and < 5yo children into registry books with return visit dates use for follow-up of patients",
+            "Make Community profile and post in clinic",
+            "clean bathrooms",
+            "Establish safe disposal of sharps"
+          ],
+          "local_govt": [
+            "Clean and paint doors",
+            "Fix loose roof tins",
+            "Split water supply (wellà toilets; rainà sinks)"
+          ],
+          "oihcs": [
+            "Provide registry books",
+            "Arrange with Aqua to fix gutters, rain catchment"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Do House-to-House Case finding",
+              "done": false
+            },
+            {
+              "item": "Put case finding NCD patients and  NCD patients and < 5yo children into registry books with return visit dates use for follow-up of patients",
+              "done": false
+            },
+            {
+              "item": "Make Community profile and post in clinic",
+              "done": false
+            },
+            {
+              "item": "clean bathrooms",
+              "done": false
+            },
+            {
+              "item": "Establish safe disposal of sharps",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Clean and paint doors",
+              "done": false
+            },
+            {
+              "item": "Fix loose roof tins",
+              "done": false
+            },
+            {
+              "item": "Split water supply (well🡪 toilets; rain🡪 sinks",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Provide registry books",
+              "done": true
+            },
+            {
+              "item": "Arrange with Aqua to fix gutters, rain catchment",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Do House-to-House Case finding (2nd Request)",
+            "Put case finding NCD patients and children less than 5 years into registry books with return visit dates use for follow-up of patients (2nd Request)",
+            "Start calling all of these patients into the clinic or visit them at home for their regular visits",
+            "Clean Toilet"
+          ],
+          "local_govt": [
+            "3 new doors and 1 door knob",
+            "Paint doors",
+            "Paint walls in bathroom",
+            "Fix gutter,  loose roof tins and leaks (2nd Request)",
+            "Split water supply (well🡪 toilets; rain🡪 sinks) (2nd Request)"
+          ],
+          "oihcs": [
+            "New water pump and fittings",
+            "Manila folders and patient chart items",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 10 Oct 2025 action items with a recorded Feb 2026 status, 3 (30%) were completed. The new Feb 2026 plan's top priorities: Do House-to-House Case finding (2nd Request); Put case finding NCD patients and children less than 5 years into registry books with return visit dates use for follow-up of patients (2nd Request)."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "mejit",
+      "atoll": "Mejit",
+      "health_center": "Mejit",
+      "display_name": "Mejit HC",
+      "mis_datapoint_id": 9,
+      "officers": {
+        "mayor": "Neal Keju",
+        "ha": "Joel Laidren"
+      },
+      "gps": {
+        "lat": 10.284074900500059,
+        "lon": 170.87060244675698,
+        "source": "geojson_centroid"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 48
+        },
+        "2025-10": {
+          "overall": 60
+        },
+        "2026-02": {
+          "overall": 79
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 48,
+      "latest_round": "2026-02",
+      "latest_score": 79,
+      "improvement_pts": 31,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Organize meds and supplies",
+            "House-to-house Case Finding Survey for NCD patients and <5yo children",
+            "Put NCD and < 5yo children into registry books"
+          ],
+          "local_govt": [
+            "Fix roof/gutters;",
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)",
+            "Provide filing cabinet that can be locked"
+          ],
+          "oihcs": [
+            "Provide Vit A and Albendazole for School Pgm"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Organize meds and supplies",
+              "done": true
+            },
+            {
+              "item": "House-to-house Case Finding Survey for NCD patients and <5yo children",
+              "done": false
+            },
+            {
+              "item": "Put NCD and < 5yo children into registry books",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Fix roof/gutters",
+              "done": false
+            },
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings",
+              "done": true
+            },
+            {
+              "item": "Provide filing cabinet that can be locked",
+              "done": true
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Provide Vit A and Albendazole for School Program",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "House-to-house case finding survey (2nd Request)",
+            "Put NCD and children less than  5 years into registry books (2nd Request)",
+            "Start routine follow-up visits for all NCD and children less than 5 years",
+            "Make school roster and use for school program in May or June"
+          ],
+          "local_govt": [
+            "Replace one door and knob",
+            "Provide 2 buckets of paint for inside and outside of clinic and supervise painting",
+            "Clean out grass and other stuff from gutters."
+          ],
+          "oihcs": [
+            "Provide water pump and fittings/pipes",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 7 Oct 2025 action items with a recorded Feb 2026 status, 4 (57%) were completed. The new Feb 2026 plan's top priorities: House-to-house case finding survey (2nd Request); Put NCD and children less than  5 years into registry books (2nd Request)."
+      },
+      "above_median": true
+    },
+    {
+      "site_key": "maloelap_kaben",
+      "atoll": "Maloelap",
+      "health_center": "Kaben",
+      "display_name": "Maloelap-Kaben HC",
+      "mis_datapoint_id": 10,
+      "officers": {
+        "mayor": "William Saito",
+        "ha": "Rodney Briand"
+      },
+      "gps": {
+        "lat": 8.893026856500057,
+        "lon": 170.8401931977796,
+        "source": "geojson_centroid"
+      },
+      "scores": {
+        "2025-10": {
+          "overall": 51
+        },
+        "2026-02": {
+          "overall": 52
+        }
+      },
+      "baseline_round": "2025-10",
+      "baseline_score": 51,
+      "latest_round": "2026-02",
+      "latest_score": 52,
+      "improvement_pts": 1,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "House-to-house Case Finding Survey for NCD patients and <5yo children",
+            "Put NCD and < 5yo children into registry books",
+            "Post hours of operation"
+          ],
+          "local_govt": [
+            "Provide light bulbs;",
+            "lock for storage;",
+            "fix regulator for solar"
+          ],
+          "oihcs": [
+            "follow-up status of water pump order;",
+            "Check if OIHCS can provide radio",
+            "Provided registry books"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "House-to-house Case Finding Survey for NCD patients and <5yo children",
+              "done": false
+            },
+            {
+              "item": "Put NCD and < 5yo children into registry books",
+              "done": false
+            },
+            {
+              "item": "Post hours of operation",
+              "done": true
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Provide light bulbs",
+              "done": false
+            },
+            {
+              "item": "lock for storage",
+              "done": false
+            },
+            {
+              "item": "fix regulator for solar",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "follow-up status of water pump order",
+              "done": true
+            },
+            {
+              "item": "Check if OIHCS can provide radio",
+              "done": true
+            },
+            {
+              "item": "Provided registry books",
+              "done": true
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Use larger sharps container. Dispose in burn pit when ¾ full.",
+            "Get rid of junk- old freezers, old door, old batteries in clinic",
+            "Clean doors, floor, window frames and bathroom",
+            "House-to-house Case Finding Survey for NCD patients and children less than 5 years",
+            "and put into registry books (2nd Request)"
+          ],
+          "local_govt": [
+            "Replace 2 doors and 4 door knobs",
+            "2 buckets of paint- for inside and outside of clinic."
+          ],
+          "oihcs": [
+            "Provide water pump (0.5 hp alternating current)",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 9 Oct 2025 action items with a recorded Feb 2026 status, 4 (44%) were completed. The new Feb 2026 plan's top priorities: Use larger sharps container. Dispose in burn pit when ¾ full.; Get rid of junk- old freezers, old door, old batteries in clinic."
+      },
+      "above_median": false
+    },
+    {
+      "site_key": "aur_tobal",
+      "atoll": "Aur",
+      "health_center": "Tobal",
+      "display_name": "Aur-Tabal HC",
+      "mis_datapoint_id": 12,
+      "officers": {
+        "mayor": "Hesa Kaious",
+        "ha": "James Simon"
+      },
+      "gps": {
+        "lat": 8.30691567650004,
+        "lon": 171.16121291403346,
+        "source": "geojson_centroid"
+      },
+      "scores": {
+        "2025-07": {
+          "overall": 81
+        },
+        "2025-10": {
+          "overall": 18
+        },
+        "2026-02": {
+          "overall": 46
+        }
+      },
+      "baseline_round": "2025-07",
+      "baseline_score": 81,
+      "latest_round": "2026-02",
+      "latest_score": 46,
+      "improvement_pts": -35,
+      "improvement_plan": {
+        "2025-10_actions": {
+          "ha": [
+            "Clean sink, floors, office;",
+            "Restart weekly reports",
+            "Do House-to-house case finding for < 5yo Children and NCD patients;",
+            "Make Community Profile and post in clinic",
+            "Post clinic hours on front door",
+            "Restart weekly reporting"
+          ],
+          "local_govt": [
+            "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings)",
+            "Hook up water supply;",
+            "Set Hours of clinic operation for health assistant to open",
+            "Provide SSB  radio"
+          ],
+          "oihcs": [
+            "Plan on-site missions to initiate NCD PEN and Immunization delivery by health assistant"
+          ]
+        },
+        "2026-02_status": {
+          "ha": [
+            {
+              "item": "Clean sink, floors, office",
+              "done": false
+            },
+            {
+              "item": "Restart weekly reports",
+              "done": true
+            },
+            {
+              "item": "Do House-to-house case finding for < 5yo Children and NCD patients",
+              "done": false
+            },
+            {
+              "item": "Make Community Profile and post in clinic",
+              "done": false
+            },
+            {
+              "item": "Post clinic hours on front door",
+              "done": false
+            }
+          ],
+          "local_govt": [
+            {
+              "item": "Meet with health assistant at least one time per month to supervise and work on improvements (or invite him to Local Council or Health Council meetings",
+              "done": true
+            },
+            {
+              "item": "Hook up water supply",
+              "done": false
+            },
+            {
+              "item": "Set Hours of clinic operation for health assistant to open",
+              "done": true
+            },
+            {
+              "item": "Provide SSB  radio",
+              "done": false
+            }
+          ],
+          "oihcs": [
+            {
+              "item": "Plan on-site missions to initiate NCD PEN and Immunization delivery by health assistant",
+              "done": false
+            }
+          ]
+        },
+        "2026-02_new_plan": {
+          "ha": [
+            "Clean sink, floors, window sills (2nd Request)",
+            "Mow weeds, clean outside trash",
+            "Do House-to-house case finding for < 5yo Children and NCD patients (BP and glucose for over 30 years old);",
+            "Put all NCD patients and less than 5 year old into registries",
+            "Organize meds by categories on shelves",
+            "Do school program in this month"
+          ],
+          "local_govt": [
+            "Fix bathroom roof leak",
+            "Fix toilet room floor drain",
+            "Replace 3 doors including knobs",
+            "Meet with health assistant at least one time per month and supervise to clean and organize the clinic. (2nd Request)"
+          ],
+          "oihcs": [
+            "Fix water supply to sinks and toilet (no pump, no electricity)",
+            "Send bolts for new beds (8 short bolts; 4 long bolts for 1 bed)"
+          ]
+        },
+        "ai_summary": "Of the 10 Oct 2025 action items with a recorded Feb 2026 status, 3 (30%) were completed. The new Feb 2026 plan's top priorities: Clean sink, floors, window sills (2nd Request); Mow weeds, clean outside trash."
+      },
+      "above_median": false
+    }
+  ]
+}
