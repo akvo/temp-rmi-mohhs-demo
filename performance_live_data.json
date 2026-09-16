@@ -1,0 +1,238 @@
+{
+ "fetched_at": "2026-09-16T15:02:52+00:00",
+ "rounds": {
+  "2026-07": {
+   "arno_ine": {
+    "overall": 77,
+    "points": 37,
+    "groups": {
+     "community_accountability": 2,
+     "community_health": 0,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 10,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 8,
+     "services_delivery": 7
+    }
+   },
+   "mili_enejet": {
+    "overall": 69,
+    "points": 33,
+    "groups": {
+     "community_accountability": 0,
+     "community_health": 2,
+     "community_engagement": 1,
+     "staffing_credentials": 1,
+     "facility_structure": 7,
+     "facility_cleanliness": 4,
+     "facility_meds_storage": 2,
+     "services_reporting": 8,
+     "services_delivery": 8
+    }
+   },
+   "ebon": {
+    "overall": 88,
+    "points": 42,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 2,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 8,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 9,
+     "services_delivery": 9
+    }
+   },
+   "jaluit_jabor": {
+    "overall": 85,
+    "points": 41,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 0,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 10,
+     "facility_cleanliness": 7,
+     "facility_meds_storage": 2,
+     "services_reporting": 8,
+     "services_delivery": 7
+    }
+   },
+   "ailinglaplap_woja": {
+    "overall": 88,
+    "points": 42,
+    "groups": {
+     "community_accountability": 3,
+     "community_health": 2,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 10,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 9,
+     "services_delivery": 8
+    }
+   },
+   "jabat": {
+    "overall": 92,
+    "points": 44,
+    "groups": {
+     "community_accountability": 3,
+     "community_health": 2,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 11,
+     "facility_cleanliness": 6,
+     "facility_meds_storage": 2,
+     "services_reporting": 9,
+     "services_delivery": 8
+    }
+   },
+   "namu_majkon": {
+    "overall": 98,
+    "points": 47,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 2,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 11,
+     "facility_cleanliness": 6,
+     "facility_meds_storage": 2,
+     "services_reporting": 9,
+     "services_delivery": 10
+    }
+   },
+   "lip": {
+    "overall": 54,
+    "points": 26,
+    "groups": {
+     "community_accountability": 2,
+     "community_health": 0,
+     "community_engagement": 1,
+     "staffing_credentials": 1,
+     "facility_structure": 8,
+     "facility_cleanliness": 4,
+     "facility_meds_storage": 2,
+     "services_reporting": 5,
+     "services_delivery": 3
+    }
+   },
+   "wotho": {
+    "overall": 81,
+    "points": 39,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 0,
+     "community_engagement": 1,
+     "staffing_credentials": 1,
+     "facility_structure": 11,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 8,
+     "services_delivery": 7
+    }
+   },
+   "ujae": {
+    "overall": 71,
+    "points": 34,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 0,
+     "community_engagement": 1,
+     "staffing_credentials": 1,
+     "facility_structure": 11,
+     "facility_cleanliness": 3,
+     "facility_meds_storage": 2,
+     "services_reporting": 5,
+     "services_delivery": 7
+    }
+   },
+   "lae": {
+    "overall": 85,
+    "points": 41,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 1,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 11,
+     "facility_cleanliness": 6,
+     "facility_meds_storage": 2,
+     "services_reporting": 8,
+     "services_delivery": 6
+    }
+   },
+   "likiep": {
+    "overall": 81,
+    "points": 39,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 1,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 10,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 7,
+     "services_delivery": 7
+    }
+   },
+   "ailuk": {
+    "overall": 73,
+    "points": 35,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 1,
+     "community_engagement": 1,
+     "staffing_credentials": 1,
+     "facility_structure": 10,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 7,
+     "services_delivery": 4
+    }
+   },
+   "wotje": {
+    "overall": 88,
+    "points": 42,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 1,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 9,
+     "facility_cleanliness": 5,
+     "facility_meds_storage": 2,
+     "services_reporting": 9,
+     "services_delivery": 9
+    }
+   },
+   "aur_tobal": {
+    "overall": 31,
+    "points": 15,
+    "groups": {
+     "community_accountability": 0,
+     "community_health": 0,
+     "community_engagement": 0,
+     "staffing_credentials": 1,
+     "facility_structure": 7,
+     "facility_cleanliness": 2,
+     "facility_meds_storage": 1,
+     "services_reporting": 4,
+     "services_delivery": 0
+    }
+   }
+  }
+ },
+ "meta": {
+  "2026-07": {
+   "n_sites": 15,
+   "total_sites": 18
+  }
+ }
+}

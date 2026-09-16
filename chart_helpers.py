@@ -3,6 +3,8 @@
 Both tabs import from here instead of redefining the same font/color/theme
 plumbing — see performance_tab.py and jmp_wash_tab.py.
 """
+import math
+
 import folium
 from folium.plugins import Fullscreen, MiniMap
 from jinja2 import Template
@@ -11,6 +13,26 @@ FONT_FAMILY = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 
 TEXT_GRAY = "#475569"
 
 ESRI_IMAGERY_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+
+ALL_ATOLLS_OPTION = "All"
+
+
+def atoll_multiselect(label, all_atolls, key, help=None):
+    """A 'Filter by atoll' multiselect that defaults to a single "All" pill
+    instead of one pill per atoll -- with a dozen-plus atolls, defaulting to
+    every one pre-selected renders as a wall of pills that looks cluttered.
+    Selecting "All" (the default) means every atoll; picking specific
+    atolls instead scopes down to just those. Returns the resolved list of
+    atolls to filter by (never empty unless the user explicitly deselects
+    everything, including "All")."""
+    import streamlit as st
+
+    selected = st.multiselect(
+        label, options=[ALL_ATOLLS_OPTION] + all_atolls, default=[ALL_ATOLLS_OPTION], help=help, key=key,
+    )
+    if ALL_ATOLLS_OPTION in selected:
+        return all_atolls
+    return selected
 
 
 def rgba(hex_color, alpha):
@@ -58,26 +80,85 @@ def inject_page_css():
     )
 
 
-def build_folium_map(sites, marker_color_fn, tooltip_fn, popup_fn, pad=0.6, get_gps=lambda s: s["gps"]):
+# Fraction of the sites' own span to leave as breathing room around the
+# markers, with a floor in degrees for the single-site case (where the span is
+# exactly 0 and a proportional pad would be too).
+BOUNDS_PAD_FRACTION = 0.06
+BOUNDS_PAD_MIN_DEGREES = 0.04
+# A lone marker shouldn't land on a street-level view; the RMI imagery also
+# runs out well before Leaflet's max.
+MAX_FIT_ZOOM = 13
+TILE_SIZE = 256
+
+
+def _mercator_y(lat):
+    """Web-Mercator y for a latitude, in the projection's own units (the
+    world spans 2*pi). Latitude degrees are not linear on screen, so fitting
+    a latitude range needs this rather than a plain degree difference."""
+    lat = max(min(lat, 85.05), -85.05)  # Mercator is undefined at the poles
+    return math.log(math.tan(math.pi / 4 + math.radians(lat) / 2))
+
+
+def fit_zoom(south, west, north, east, width_px, height_px):
+    """The largest integer zoom at which the given box still fits in a
+    width_px x height_px viewport.
+
+    This replaces Leaflet's own `fitBounds`, which CANNOT be used here:
+    inside st_folium's iframe it executes before the container has its final
+    size, so Leaflet fits the bounds to a roughly zero-sized box and falls
+    back to minimum zoom -- the whole world, tiles repeating, every RMI
+    marker in one dot.
+
+    The returned zoom is used twice: as the map's own `zoom_start` (so the
+    first paint is already right) and, via build_folium_map's `view`, as
+    st_folium's `center=`/`zoom=` arguments. That second one is what makes
+    it stick -- st_folium calls `map.setView(center, zoom)` from the
+    component, after the container has its real size. It only fires when the
+    values change, so panning and zooming by hand still work; the view
+    re-fits when the atoll filter changes the bounds, which is what you want.
+    """
+    lon_span = max(east - west, 1e-6)
+    lat_span = max(_mercator_y(north) - _mercator_y(south), 1e-6)
+    zoom_lon = math.log2(width_px * 360 / (TILE_SIZE * lon_span))
+    zoom_lat = math.log2(height_px * 2 * math.pi / (TILE_SIZE * lat_span))
+    return max(0, min(MAX_FIT_ZOOM, math.floor(min(zoom_lon, zoom_lat))))
+
+
+def bounds_for(values):
+    """(low, high) for one axis, padded proportionally to its own span."""
+    low, high = min(values), max(values)
+    pad = max((high - low) * BOUNDS_PAD_FRACTION, BOUNDS_PAD_MIN_DEGREES)
+    return low - pad, high + pad
+
+
+def build_folium_map(sites, marker_color_fn, tooltip_fn, popup_fn, get_gps=lambda s: s["gps"],
+                     width_px=1100, height_px=520):
     """A Folium map configured the same way for both tabs: Esri satellite +
     OpenStreetMap layers (togglable via LayerControl), a hospital-pin marker
     per site colored/labeled by the caller's own logic, zoom, fullscreen,
     and a minimap — fit to the sites' combined bounding box.
 
+    Returns (map, view) -- `view` is {"center": [lat, lon], "zoom": int},
+    which the caller MUST pass to st_folium as `center=`/`zoom=` for the fit
+    to survive (see fit_zoom). Fits the view to the sites themselves, so a
+    single-atoll filter zooms in on that atoll instead of leaving one marker
+    adrift in open ocean.
+
     sites: list of dicts, each with GPS reachable via get_gps(site) ->
         {"lat":..., "lon":...}. Skip sites with no GPS before calling this.
+    width_px/height_px: the on-screen size the map will occupy, used to pick
+        the initial zoom -- pass the same height given to st_folium.
     marker_color_fn(site) -> a folium.Icon `color` name (fixed named
         palette — 'red'/'blue'/'darkgreen'/'orange'/'gray', etc., not hex).
     tooltip_fn(site) -> short string shown on hover.
     popup_fn(site) -> HTML string shown in the popup on click.
     """
-    lats = [get_gps(s)["lat"] for s in sites]
-    lons = [get_gps(s)["lon"] for s in sites]
-    south, north = min(lats) - pad, max(lats) + pad
-    west, east = min(lons) - pad, max(lons) + pad
+    south, north = bounds_for([get_gps(s)["lat"] for s in sites])
+    west, east = bounds_for([get_gps(s)["lon"] for s in sites])
     center = [(south + north) / 2, (west + east) / 2]
 
-    m = folium.Map(location=center, tiles=None, control_scale=True)
+    zoom = fit_zoom(south, west, north, east, width_px, height_px)
+    m = folium.Map(location=center, tiles=None, control_scale=True, zoom_start=zoom)
     folium.TileLayer(
         tiles=ESRI_IMAGERY_TILES, attr="Esri", name="Satellite", overlay=False, control=True,
     ).add_to(m)
@@ -92,11 +173,11 @@ def build_folium_map(sites, marker_color_fn, tooltip_fn, popup_fn, pad=0.6, get_
             icon=folium.Icon(color=marker_color_fn(s), icon="hospital-o", prefix="fa"),
         ).add_to(m)
 
-    m.fit_bounds([[south, west], [north, east]])
+    # Deliberately NO m.fit_bounds() here -- see fit_zoom's docstring.
     Fullscreen(position="topleft").add_to(m)
     MiniMap(toggle_display=True, position="bottomleft").add_to(m)
     folium.LayerControl(position="topright", collapsed=False).add_to(m)
-    return m
+    return m, {"center": center, "zoom": zoom}
 
 
 class _LegendControl(folium.MacroElement):

@@ -1,11 +1,21 @@
 # Visual-by-visual reference
 
-Every chart/panel in both tabs, what it shows, where its data comes from,
-and what processing (if any) was applied between the raw source and the
-JSON field the UI reads. "Processing" describes what already happened in
-the `build_*.py` ETL script — the Streamlit code in `performance_tab.py` /
-`jmp_wash_tab.py` only does display-time formatting (sorting, coloring,
-number formatting), not data transformation, unless noted.
+> **No round names, thresholds or counts are hardcoded in the UI.** Every
+> caption, legend, tab label and axis title is built from the data it
+> describes — the round being colored, the band constants, the section and
+> domain labels in the source file. Change the data and the sub-text
+> follows. This is deliberate: the map caption used to read "Feb 2026" long
+> after it had started coloring by July 2026, and the improvement-plan tab
+> read "Oct 2025 status" over Feb 2026 content.
+
+Every chart/panel in all three tabs, what it shows, where its data comes
+from, and what processing (if any) was applied between the raw source and
+the field the UI reads. For the two tabs backed by a committed snapshot,
+"Processing" describes what already happened in the `build_*.py` ETL script
+— the Streamlit code only does display-time formatting (sorting, coloring,
+number formatting), not data transformation, unless noted. The Essential
+Meds tab has no ETL script: its shaping happens at fetch time in
+`meds_live.py`, and is described in that tab's own section.
 
 ---
 
@@ -79,6 +89,30 @@ number formatting), not data transformation, unless noted.
   15 sites, Oct 2025 for the 3 that have no July figure (see above). It is
   *not* always "vs. July 2025".
 
+### Score breakdown (detail panel)
+
+- **Shows**: for the selected site, how its overall score splits across the
+  assessment form's nine scored question groups — one row per group, the
+  points scored (colored by the same ≥55 / 35–54 / <35 percent-of-max bands
+  as the overall score) drawn on a track the full width of that group's
+  maximum, with `scored/max` alongside. A short colored bar against a long
+  track reads directly as "this is where the points went". Header line gives
+  the round and the total, e.g. "37 of 48 points (77%)".
+- **Data source**: `sites[].scores[round].groups` + `.points` + `.overall`,
+  from `performance_live_data.json` (built by `performance_live.fetch_live_rounds`).
+- **Processing**: none — each group's points come straight from that group's
+  own `autofield` "... Score" question on the submission, and the total from
+  `final_score` / `overall_score_in_out_of_48`. The per-group **maxima** are
+  the one derived part (`performance_live.SCORE_GROUPS`): the API exposes no
+  per-option scores, so they are counted from each group's scoring questions
+  (1 point per `yes`, 1 per selected multiple-option value excluding the
+  non-scoring `none`/`other`). That rule reproduces every group score and
+  `final_score` exactly across all 16 July 2026 submissions, and the maxima
+  sum to the form's own denominator of 48.
+- **Only MIS-snapshot rounds have this.** The three curated static rounds were
+  transcribed from summary reports carrying overall scores only, so the panel
+  shows an explanatory caption instead for a site with no MIS submission.
+
 ### Improvement Plan detail panel
 
 - **Shows**: the selected site's name/score/officers, a one-paragraph
@@ -110,7 +144,79 @@ number formatting), not data transformation, unless noted.
 
 ---
 
-## Tab 2 — JMP WASH Facility Assessment (`jmp_wash_tab.py`)
+## Tab 2 — Essential Meds & Supplies (`meds_tab.py`)
+
+Source: `meds_data.json`, a committed snapshot of form `1783385736711`
+("NI HC - Essential Meds and Supplies Checklist") written by
+`build_live_data.py` — see README's "Where the data comes from". The tab
+makes no API calls.
+
+**How the scores work.** The checklist is two independently scored sections
+of "tick what you have in stock" multiple-option categories: Essential
+Supplies (7 categories, 52 items) and Essential Meds (22 categories, 60
+items). Each section has its own `*_score` and `*_percentage` autofield.
+`none` and `other` are bookkeeping choices, not stocked items, and are
+excluded from both the score and the maximum — counting one point per
+remaining ticked item reproduces every `*_score` autofield exactly, and the
+resulting maxima (52 / 60) reproduce every `*_percentage` autofield as
+`round(100 * score / max)`, verified across all scored submissions on the
+form. The category structure, item labels and maxima are **derived from the
+published form definition at build time**, not hardcoded.
+
+**Bands.** `GOOD_FROM` / `PARTIAL_FROM` in `meds_tab.py` (currently 80 / 50)
+are a *dashboard reading aid, not an MOHHS target*: unlike the Performance Assessment (which defines >85% in its
+own `meets_target` field), this form sets no threshold, so there was none to
+honour. They are labelled as such in the UI.
+
+### KPI row
+
+- **Shows**: health centers reporting, average essential-meds and
+  essential-supplies availability, and how many sites clear 80% on both.
+- **Processing**: plain means over the filtered, reporting sites. The two
+  sections are deliberately never averaged together — a site can be well
+  stocked on equipment and out of medicines, and one combined number would
+  hide exactly that.
+
+### Map
+
+- **Shows**: 🏥 per health center, colored by essential-meds availability.
+  Hover gives both section scores; clicking loads that site's checklist.
+- **Data source**: `sections.meds.pct`, plus GPS from the shared site
+  registry (`performance_data.json`'s `sites[]`, reused so a health center
+  is named and placed identically on every tab).
+
+### Stock availability by health center
+
+- **Shows**: grouped horizontal bars, essential meds and essential supplies
+  side by side per site, sorted by meds availability. Clicking a bar loads
+  that site on the right; the selected row is highlighted.
+- **Data source**: `sections[*].pct`, with `score`/`max` in the hover.
+
+### Most commonly out of stock
+
+- **Shows**: the 12 individual items missing at the most health centers,
+  bar colored by which section the item belongs to.
+- **Processing**: counted client-side across the *filtered* sites reporting
+  in the selected round — an item counts as missing when its option value
+  is absent from that site's ticked list for its category.
+
+### Checklist detail panel
+
+- **Shows**: the selected site's two section score cards, then a tab per
+  section containing a per-category breakdown (items in stock on a track
+  the full width of that category's item count, same idiom as the
+  Performance tab's score breakdown) and an "Out of stock" expander listing
+  the specific missing items, grouped by category.
+- **Processing**: missing = the category's schema items minus the ticked
+  ones. Ticked values the form no longer offers are dropped on ingest, so
+  that difference is always clean.
+- A submission that predates the form's score autofields gets its score
+  recounted from the ticked items, and the panel says so.
+- A submission filed under an inferred round says so in the panel, naming
+  the form date it was inferred from. Round coverage and anything excluded
+  are reported by `build_live_data.py` at build time rather than in the UI.
+
+## Tab 3 — JMP WASH Facility Assessment (`jmp_wash_tab.py`)
 
 ### Atoll filter
 

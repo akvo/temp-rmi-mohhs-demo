@@ -1,9 +1,12 @@
 """JMP WASH Facility Assessment tab.
 
-Reads jmp_data.json (built by build_jmp_data.py) — the 19 already-submitted
-JMP WASH Facility Assessment records (form 1783393878133) with their
-computed JMP-2018 basic/limited/no-service ladder per domain. See
-VISUALS.md for what each element below shows and where its data comes from.
+This was a one-time facility assessment, not an ongoing monitoring round
+like Performance Assessment -- the underlying MIS submissions aren't
+expected to change, so this tab reads the committed jmp_data.json snapshot
+directly (built by build_jmp_data.py) rather than fetching live at runtime.
+If the assessment is ever redone or corrected, re-run build_jmp_data.py to
+regenerate the snapshot and commit the new file. See VISUALS.md for what
+each element below shows and where its data comes from.
 
 Colors intentionally differ from the Performance tab's green/amber/red score
 bands: this is a 3-level service *ladder* (Basic/Limited/No service), not a
@@ -16,18 +19,23 @@ import plotly.graph_objects as go
 import streamlit as st
 from streamlit_folium import st_folium
 
-from chart_helpers import TEXT_GRAY, add_map_legend, apply_chart_theme, build_folium_map, rgba
+from chart_helpers import TEXT_GRAY, add_map_legend, apply_chart_theme, atoll_multiselect, build_folium_map, rgba
 
 DATA_PATH = Path(__file__).resolve().parent / "jmp_data.json"
 
 LEVEL_COLOR = {"Basic service": "#2a78d6", "Limited service": "#eda100", "No service": "#eb6834"}
 LEVEL_TEXT = {"Basic service": "#ffffff", "Limited service": "#241a00", "No service": "#ffffff"}
 LEVEL_SHORT = {"Basic service": "Basic", "Limited service": "Limited", "No service": "No Service"}
+# Emoji swatch per level, for the legend caption -- built from the data's own
+# level list rather than a retyped string, so a level added to or renamed in
+# jmp_data.json shows up in the legend instead of silently going missing.
+LEVEL_SWATCH = {"Basic service": "🟦", "Limited service": "🟨", "No service": "🟧"}
 # folium.Icon only accepts a fixed named-color palette (no arbitrary hex) —
 # closest named colors to the LEVEL_COLOR hex scheme above.
 LEVEL_MAP_COLOR = {"Basic service": "blue", "Limited service": "orange", "No service": "red"}
 # hex equivalents of the above, for the legend swatches (Leaflet.awesome-markers palette)
 LEVEL_MAP_COLOR_HEX = {"Basic service": "#38AADD", "Limited service": "#F69730", "No service": "#D63E2A"}
+MAP_HEIGHT = 520
 
 
 @st.cache_data
@@ -37,10 +45,11 @@ def load_jmp_data():
 
 def render_jmp_wash_tab():
     st.title("JMP WASH Facility Assessment")
-    st.caption("19 health centers · JMP-2018 core WASH-in-HCF indicators")
 
     data = load_jmp_data()
     sites = data["sites"]
+
+    st.caption(f"{len(sites)} health centers · JMP-2018 core WASH-in-HCF indicators")
     domains = data["domains"]  # [{key, label, question}, ...]
     levels = data["levels"]    # ["Basic service", "Limited service", "No service"]
 
@@ -49,10 +58,9 @@ def render_jmp_wash_tab():
 
     # --------------------------------------------------------- Atoll filter
     all_atolls = sorted({s["atoll"] for s in sites})
-    selected_atolls = st.multiselect(
-        "Filter by atoll", options=all_atolls, default=all_atolls,
+    selected_atolls = atoll_multiselect(
+        "Filter by atoll", all_atolls, key="jmp_atoll_filter",
         help="Scopes the map and domain charts below.",
-        key="jmp_atoll_filter",
     )
     filtered_sites = [s for s in sites if s["atoll"] in selected_atolls]
 
@@ -97,7 +105,7 @@ def render_jmp_wash_tab():
     n_total = len(filtered_sites) or 1  # guard div-by-zero; filtered_sites is never empty here
     level_counts = {l: sum(1 for s in filtered_sites if s["levels"][map_domain] == l) for l in levels}
 
-    m = build_folium_map(filtered_sites, marker_color, tooltip, popup)
+    m, view = build_folium_map(filtered_sites, marker_color, tooltip, popup, height_px=MAP_HEIGHT)
     add_map_legend(
         m, domain_labels[map_domain],
         [
@@ -105,7 +113,11 @@ def render_jmp_wash_tab():
             for l in levels
         ],
     )
-    map_state = st_folium(m, use_container_width=True, height=520, key="jmp_folium_map", returned_objects=["last_object_clicked"])
+    map_state = st_folium(
+        m, use_container_width=True, height=MAP_HEIGHT, key="jmp_folium_map",
+        center=view["center"], zoom=view["zoom"],  # required for the fit to stick -- see fit_zoom
+        returned_objects=["last_object_clicked"],
+    )
 
     clicked = (map_state or {}).get("last_object_clicked")
     if clicked:
@@ -119,7 +131,12 @@ def render_jmp_wash_tab():
     # ---------------------------------------------------------- Domain ladders
     with chart_col:
         st.subheader("Service levels by domain")
-        st.caption("🟦 Basic &nbsp;&nbsp; 🟨 Limited &nbsp;&nbsp; 🟧 No Service", unsafe_allow_html=True)
+        st.caption(
+            "&nbsp;&nbsp;".join(
+                f"{LEVEL_SWATCH.get(l, '▪️')} {LEVEL_SHORT.get(l, l)}" for l in levels
+            ),
+            unsafe_allow_html=True,
+        )
         for d in domains:
             counts = {level: sum(1 for s in filtered_sites if s["levels"][d["key"]] == level) for level in levels}
             pcts = {level: (counts[level] / total * 100 if total else 0) for level in levels}
@@ -147,10 +164,12 @@ def render_jmp_wash_tab():
             )
             st.plotly_chart(fig, width="stretch", config={"displayModeBar": False}, key=f"jmp_domain_chart_{d['key']}")
 
-        st.caption(
-            "ℹ️ Basic Sanitation excludes menstrual hygiene facilities (this form doesn't collect them) — "
-            "see JMP_SCORING.md for the documented limitation."
-        )
+        sanitation = next((d for d in domains if d["key"] == "sanitation"), None)
+        if sanitation:
+            st.caption(
+                f"ℹ️ {sanitation['label']} excludes menstrual hygiene facilities (this form doesn't "
+                "collect them) — see JMP_SCORING.md for the documented limitation."
+            )
 
     # ------------------------------------------------------- Site detail panel
     with detail_col:

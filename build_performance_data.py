@@ -29,10 +29,11 @@ from pathlib import Path
 
 import openpyxl
 import docx
-import requests
+
+import performance_calc
+from mis_client import MISClient
 
 HERE = Path(__file__).resolve().parent
-BASE_URL = "https://mohhs-mis.akvotest.org"
 REG_FORM_ID = 1783289494205
 GPS_QUESTION_ID = 1783289902869
 
@@ -40,8 +41,9 @@ XLSX_PATH = HERE / "raw_sources" / "NI Health Center Performance Results (Oct-No
 STATUS_DOCX_PATH = HERE / "raw_sources" / "NI HC Oct-Nov 2025 MEC Improvement Results to Feb 2026.docx"
 NEW_PLAN_DOCX_PATH = HERE / "raw_sources" / "NI HC Improvement Plans-All Sites (Feb 2026).docx"
 GEOJSON_PATH = HERE / "admin_data.geojson"
-ENV_PATH = HERE / ".env"
 OUTPUT_PATH = HERE / "performance_data.json"
+
+ROUNDS_ORDER = ["2025-07", "2025-10", "2026-02"]
 
 # --------------------------------------------------------------------------
 # Canonical 18 sites (Register=Y in the source registration spreadsheet).
@@ -133,36 +135,9 @@ ATOLL_KEYWORD_TO_SITE = {
 }
 
 
-def load_env(path):
-    values = {}
-    for line in path.read_text().splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        k, _, v = line.partition("=")
-        values[k.strip()] = v.strip().strip('"').strip("'")
-    return values
-
-
-def fetch_mis_gps():
+def fetch_mis_gps(client):
     """Return {mis_id: [lat, lon] or None} for form 1783289494205."""
-    env = load_env(ENV_PATH)
-    s = requests.Session()
-    resp = s.post(f"{BASE_URL}/api/v1/login", json={"email": env["user"], "password": env["password"]})
-    resp.raise_for_status()
-    token = resp.json()["token"]
-    rows, page = [], 1
-    while True:
-        resp = s.get(
-            f"{BASE_URL}/api/v1/form-data/{REG_FORM_ID}?page={page}&perpage=10",
-            headers={"Authorization": f"Bearer {token}"},
-        )
-        resp.raise_for_status()
-        data = resp.json()
-        rows.extend(data.get("data", []))
-        if page >= data.get("total_page", 1):
-            break
-        page += 1
+    rows = client.list_form_data(REG_FORM_ID)
     return {row["id"]: row.get("geo") for row in rows}
 
 
@@ -330,8 +305,9 @@ def build_ai_summary(display_name, feb_status, new_plan):
 
 
 def main():
-    print("Fetching MIS registrations + GPS ...")
-    mis_geo = fetch_mis_gps()
+    print("Logging in and fetching MIS registrations + GPS ...")
+    client = MISClient.login()
+    mis_geo = fetch_mis_gps(client)
     geojson_centroids = load_geojson_centroids()
 
     print(f"Reading {XLSX_PATH.name} ...")
@@ -388,16 +364,7 @@ def main():
         else:
             unmatched.append(f"{key} (no Feb 2026 score)")
 
-        rounds_present = [r for r in ("2025-07", "2025-10", "2026-02") if r in scores]
-        baseline_round = rounds_present[0] if rounds_present else None
-        latest_round = rounds_present[-1] if rounds_present else None
-        baseline_score = scores[baseline_round]["overall"] if baseline_round else None
-        latest_score = scores[latest_round]["overall"] if latest_round else None
-        improvement_pts = (
-            latest_score - baseline_score
-            if baseline_score is not None and latest_score is not None and baseline_round != latest_round
-            else None
-        )
+        summary = performance_calc.round_summary(scores, ROUNDS_ORDER)
 
         mayor, ha = OFFICERS.get(key, (None, None))
         site_feb_status = feb_status.get(key)
@@ -412,11 +379,7 @@ def main():
             "officers": {"mayor": mayor, "ha": ha},
             "gps": {"lat": geo[0], "lon": geo[1], "source": geo_source} if geo else None,
             "scores": scores,
-            "baseline_round": baseline_round,
-            "baseline_score": baseline_score,
-            "latest_round": latest_round,
-            "latest_score": latest_score,
-            "improvement_pts": improvement_pts,
+            **summary,
             "improvement_plan": {
                 "2025-10_actions": oct_plan.get(key),
                 "2026-02_status": site_feb_status,
@@ -428,20 +391,13 @@ def main():
             site["improvement_plan"]["data_quality_note"] = data_quality_notes[key]
         sites_out.append(site)
 
-    latest_scores = [s["latest_score"] for s in sites_out if s["latest_round"] == "2026-02"]
-    latest_scores_sorted = sorted(latest_scores)
-    n = len(latest_scores_sorted)
-    median = (
-        latest_scores_sorted[n // 2]
-        if n % 2
-        else (latest_scores_sorted[n // 2 - 1] + latest_scores_sorted[n // 2]) / 2
-    )
+    median, above_flags = performance_calc.median_and_flags(sites_out, ROUNDS_ORDER[-1])
     for s in sites_out:
-        s["above_median"] = s["latest_score"] > median if s["latest_round"] == "2026-02" else None
+        s["above_median"] = above_flags[s["site_key"]]
 
     output = {
         "generated_at": "2026-07-10",
-        "rounds": ["2025-07", "2025-10", "2026-02"],
+        "rounds": ROUNDS_ORDER,
         "median_latest_score": median,
         "sites": sites_out,
     }
