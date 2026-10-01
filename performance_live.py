@@ -91,19 +91,29 @@ def _parse_points(raw):
 
 
 def resolve_site_uuids(reg_rows, sites_static):
-    """{site_key: registration_uuid} for the 18 canonical sites.
+    """{site_key: registration_uuid} for the canonical sites.
 
-    reg_rows: the paginated listing from form 1783289494205 (id + uuid per
-    row) -- no extra API calls needed beyond what's already fetched for GPS.
-    sites_static: performance_data.json's "sites" list, each already
-    carrying its registration FormData id as mis_datapoint_id.
+    Matches on the registration's **name** first and its numeric datapoint id
+    only as a fallback. Name is the more durable key: the September 2026
+    migration to mohhs.mis.akvo.org renumbered every datapoint id (adding
+    10,000,000) while leaving names and uuids untouched. An id-only join
+    resolved 0 of 18 sites against the new instance, and because every
+    submission then looked like it belonged to an unregistered site, both
+    tabs simply came back empty rather than erroring -- see the coverage
+    guard in build_live_data.py, which now catches exactly that.
+
+    reg_rows: the paginated listing from form 1783289494205 (id + uuid +
+    name per row) -- no extra API calls beyond what's already fetched.
+    sites_static: performance_data.json's "sites" list.
     """
+    uuid_by_name = {row["name"]: row["uuid"] for row in reg_rows}
     uuid_by_id = {row["id"]: row["uuid"] for row in reg_rows}
-    return {
-        s["site_key"]: uuid_by_id[s["mis_datapoint_id"]]
-        for s in sites_static
-        if s["mis_datapoint_id"] in uuid_by_id
-    }
+    resolved = {}
+    for s in sites_static:
+        uuid = uuid_by_name.get(s.get("display_name")) or uuid_by_id.get(s.get("mis_datapoint_id"))
+        if uuid:
+            resolved[s["site_key"]] = uuid
+    return resolved
 
 
 def fetch_live_rounds(client, sites_static, static_rounds, reg_rows=None):

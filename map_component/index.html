@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  #map { width: 100%; height: 100vh; border-radius: 8px; overflow: hidden; }
+
+  /* In-map panels. Both are real map controls so they pan with the frame and
+     stay put at every zoom, rather than sitting in the page above the map. */
+  .panel {
+    background: rgba(255,255,255,0.95); border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 8px 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.18); font-size: 12px; color: #0f172a;
+  }
+  .panel h4 { margin: 0 0 5px 0; font-size: 11.5px; font-weight: 600; letter-spacing: .01em; }
+  .panel select {
+    width: 100%; font: inherit; font-size: 12px; color: #0f172a; padding: 4px 6px;
+    border: 1px solid #cbd5e1; border-radius: 5px; background: #fff; max-width: 260px;
+  }
+  .panel select + h4 { margin-top: 8px; }
+  #legend .row { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
+  #legend .sw { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto;
+                border: 1px solid rgba(255,255,255,.95); box-shadow: 0 0 0 1px rgba(0,0,0,.18); }
+  #legend .ct { margin-left: auto; color: #64748b; font-size: 11.5px; }
+  #legend .note { margin-top: 6px; color: #64748b; font-size: 10.5px; max-width: 210px; line-height: 1.35; }
+  .maplibregl-popup-content { font-size: 12px; padding: 8px 10px; border-radius: 6px; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+// ---------------------------------------------------------------- Streamlit
+// Raw component protocol -- no build step, no bundler. Three messages out
+// (ready, height, value) and one in (render).
+const send = (type, extra) => window.parent.postMessage(
+  Object.assign({isStreamlitMessage: true, type}, extra), "*");
+const setValue = (value) => send("streamlit:setComponentValue", {value, dataType: "json"});
+
+let MAP = null, ARGS = null, POPUP = null;
+
+function basemapStyle(spec) {
+  return {
+    version: 8,
+    sources: {base: {type: "raster", tiles: [spec.tiles], tileSize: 256, attribution: spec.attribution}},
+    layers: [{id: "base", type: "raster", source: "base"}],
+  };
+}
+
+/** Bin index for a value against the metric's quantile cuts. */
+function binOf(value, cuts) {
+  if (value === null || value === undefined) return null;
+  let i = 0;
+  for (const c of cuts) if (value >= c) i++;
+  return i;
+}
+
+/** A metric either carries its own fixed colours (an ordered category, like
+ *  the JMP service ladder) or draws from the sequential ramp by bin. */
+function colorOf(metric, bin, nBins) {
+  if (bin === null) return ARGS.no_data_color;
+  if (metric.colors) return metric.colors[bin] || ARGS.no_data_color;
+  const ramp = ARGS.ramp;
+  const step = Math.round(bin * (ramp.length - 1) / Math.max(nBins - 1, 1));
+  return ramp[step];
+}
+
+/** The selected measure's own value, appended to the tooltip. A category
+ *  metric stores an index, so it reads its label off the legend instead. */
+function valueLine(metric, v) {
+  if (v === null || v === undefined) return "<br><b>" + metric.label + ":</b> no data";
+  const shown = metric.colors
+    ? (metric.legend[v] || {}).label
+    : metric.format.replace("{}", Math.round(v));
+  return "<br><b>" + metric.label + ":</b> " + shown;
+}
+
+/** Rebuild point colours for the selected metric, entirely client-side --
+ *  switching metric never round-trips to the server. */
+function featuresFor(metric) {
+  const nBins = metric.cuts.length + 1;
+  return {
+    type: "FeatureCollection",
+    features: ARGS.points.map((p, i) => {
+      const v = metric.values[i];
+      return {
+        type: "Feature",
+        geometry: {type: "Point", coordinates: [p.lon, p.lat]},
+        properties: {
+          site_key: p.site_key,
+          color: colorOf(metric, binOf(v, metric.cuts), nBins),
+          tooltip: p.tooltip + valueLine(metric, v),
+        },
+      };
+    }),
+  };
+}
+
+function renderLegend(metric) {
+  const el = document.getElementById("legend");
+  const rows = metric.legend.map(r =>
+    `<div class="row"><span class="sw" style="background:${r.color}"></span>` +
+    `<span>${r.label}</span><span class="ct">${r.count}</span></div>`).join("");
+  el.innerHTML = `<h4>${metric.label}</h4>${rows}` +
+    (ARGS.legend_note ? `<div class="note">${ARGS.legend_note}</div>` : "");
+}
+
+function applyMetric(key) {
+  const metric = ARGS.metrics.find(m => m.key === key) || ARGS.metrics[0];
+  MAP.getSource("sites").setData(featuresFor(metric));
+  renderLegend(metric);
+}
+
+/** A maplibre control wrapping an arbitrary element, so our panels are real
+ *  map controls (corner-anchored, above the canvas) rather than page chrome. */
+class PanelControl {
+  constructor(el) { this._el = el; }
+  onAdd() { return this._el; }
+  onRemove() { this._el.remove(); }
+}
+
+function buildControls() {
+  const picker = document.createElement("div");
+  picker.className = "panel maplibregl-ctrl";
+  const options = ARGS.metrics.map(m =>
+    `<option value="${m.key}"${m.key === ARGS.metric ? " selected" : ""}>${m.label}</option>`).join("");
+  const bases = Object.keys(ARGS.basemaps).map(b =>
+    `<option value="${b}"${b === ARGS.basemap ? " selected" : ""}>${b}</option>`).join("");
+  picker.innerHTML =
+    `<h4>${ARGS.metric_title}</h4><select id="metric">${options}</select>` +
+    `<h4>Basemap</h4><select id="basemap">${bases}</select>`;
+  MAP.addControl(new PanelControl(picker), "top-left");
+
+  const legend = document.createElement("div");
+  legend.className = "panel maplibregl-ctrl";
+  legend.id = "legend";
+  MAP.addControl(new PanelControl(legend), "bottom-right");
+
+  picker.querySelector("#metric").addEventListener("change", e => applyMetric(e.target.value));
+  picker.querySelector("#basemap").addEventListener("change", e => {
+    // Swapping the style drops our layers, so re-add them once it reloads.
+    const current = picker.querySelector("#metric").value;
+    MAP.setStyle(basemapStyle(ARGS.basemaps[e.target.value]));
+    MAP.once("styledata", () => { addSiteLayers(); applyMetric(current); });
+  });
+  // Stop map drag/zoom from hijacking interaction with the panels.
+  for (const el of [picker, legend]) {
+    el.addEventListener("mousedown", ev => ev.stopPropagation());
+    el.addEventListener("wheel", ev => ev.stopPropagation());
+    el.addEventListener("dblclick", ev => ev.stopPropagation());
+  }
+}
+
+function addSiteLayers() {
+  if (MAP.getSource("sites")) return;
+  MAP.addSource("sites", {type: "geojson", data: {type: "FeatureCollection", features: []}});
+  MAP.addLayer({
+    id: "sites", type: "circle", source: "sites",
+    paint: {
+      "circle-radius": ARGS.radius,
+      "circle-color": ["get", "color"],
+      "circle-stroke-width": 2,
+      "circle-stroke-color": "#ffffff",
+    },
+  });
+  MAP.on("mouseenter", "sites", e => {
+    MAP.getCanvas().style.cursor = "pointer";
+    POPUP.setLngLat(e.features[0].geometry.coordinates.slice())
+         .setHTML(e.features[0].properties.tooltip).addTo(MAP);
+  });
+  MAP.on("mouseleave", "sites", () => { MAP.getCanvas().style.cursor = ""; POPUP.remove(); });
+  MAP.on("click", "sites", e => setValue({site_key: e.features[0].properties.site_key}));
+}
+
+function boot(args) {
+  ARGS = args;
+  send("streamlit:setFrameHeight", {height: args.height});
+  if (MAP) {  // a rerun with new data: refresh points, keep the user's view
+    applyMetric(document.getElementById("metric") ? document.getElementById("metric").value : args.metric);
+    return;
+  }
+  document.getElementById("map").style.height = args.height + "px";
+  MAP = new maplibregl.Map({
+    container: "map",
+    style: basemapStyle(args.basemaps[args.basemap]),
+    center: [args.view.lon, args.view.lat],
+    zoom: args.view.zoom,
+    attributionControl: {compact: true},
+  });
+  window.__mohhsMap = MAP;  // debug/testing handle; nothing in the app reads it
+  POPUP = new maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 12});
+  MAP.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
+  MAP.addControl(new maplibregl.FullscreenControl(), "top-right");
+  MAP.on("load", () => {
+    addSiteLayers();
+    buildControls();
+    applyMetric(args.metric);
+    // Fit here, not at construction: by "load" the container has its real
+    // size, which is what made fitting unreliable in the embedded maps.
+    if (args.bounds) {
+      MAP.fitBounds(args.bounds, {padding: 36, duration: 0, maxZoom: args.max_zoom});
+    }
+  });
+}
+
+window.addEventListener("message", (event) => {
+  if (!event.data || event.data.type !== "streamlit:render") return;
+  boot(event.data.args.spec);
+});
+send("streamlit:componentReady", {apiVersion: 1});
+</script>
+</body>
+</html>

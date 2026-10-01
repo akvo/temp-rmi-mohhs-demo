@@ -1,8 +1,5 @@
 streamlit
 plotly
-folium
-streamlit-folium
 openpyxl
 python-docx
 requests
-jinja2

@@ -17,9 +17,9 @@ from pathlib import Path
 
 import plotly.graph_objects as go
 import streamlit as st
-from streamlit_folium import st_folium
 
-from chart_helpers import TEXT_GRAY, add_map_legend, apply_chart_theme, atoll_multiselect, build_folium_map, rgba
+import map_helpers
+from chart_helpers import TEXT_GRAY, apply_chart_theme, atoll_multiselect, rgba
 
 DATA_PATH = Path(__file__).resolve().parent / "jmp_data.json"
 
@@ -30,11 +30,6 @@ LEVEL_SHORT = {"Basic service": "Basic", "Limited service": "Limited", "No servi
 # level list rather than a retyped string, so a level added to or renamed in
 # jmp_data.json shows up in the legend instead of silently going missing.
 LEVEL_SWATCH = {"Basic service": "🟦", "Limited service": "🟨", "No service": "🟧"}
-# folium.Icon only accepts a fixed named-color palette (no arbitrary hex) —
-# closest named colors to the LEVEL_COLOR hex scheme above.
-LEVEL_MAP_COLOR = {"Basic service": "blue", "Limited service": "orange", "No service": "red"}
-# hex equivalents of the above, for the legend swatches (Leaflet.awesome-markers palette)
-LEVEL_MAP_COLOR_HEX = {"Basic service": "#38AADD", "Limited service": "#F69730", "No service": "#D63E2A"}
 MAP_HEIGHT = 520
 
 
@@ -53,8 +48,10 @@ def render_jmp_wash_tab():
     domains = data["domains"]  # [{key, label, question}, ...]
     levels = data["levels"]    # ["Basic service", "Limited service", "No service"]
 
-    if "jmp_selected_site" not in st.session_state:
-        st.session_state.jmp_selected_site = sites[0]["uuid"]
+    # The selectbox's own widget key IS the selection state -- a keyed widget
+    # ignores `index` on rerun, so a separate variable would be overwritten.
+    if st.session_state.get("jmp_site_select") not in {s["uuid"] for s in sites}:
+        st.session_state.jmp_site_select = sites[0]["uuid"]
 
     # --------------------------------------------------------- Atoll filter
     all_atolls = sorted({s["atoll"] for s in sites})
@@ -82,47 +79,33 @@ def render_jmp_wash_tab():
 
     # -------------------------------------------------------------- Map
     st.subheader("Map")
-    domain_keys = [d["key"] for d in domains]
-    domain_labels = {d["key"]: d["question"] for d in domains}
-    map_domain = st.selectbox(
-        "Color map by", options=domain_keys, format_func=lambda k: domain_labels[k], key="jmp_map_domain",
-    )
     st.caption(
-        "🏥 colored by JMP service level for the selected domain. Hover a marker for detail, click one to load it below. "
-        "Use the layer control (top right) to switch basemap, or the +/- to zoom."
+        "🏥 coloured by JMP service level for the domain picked **in the map** (top left). "
+        "Hover a marker for detail, click one to load it below."
     )
 
-    def marker_color(s):
-        return LEVEL_MAP_COLOR[s["levels"][map_domain]]
+    def tooltip(site):
+        return "<br>".join([f"<b>{site['name']}</b>", f"{site['atoll']} — {site['island']}"])
 
-    def tooltip(s):
-        return f"{s['name']} — {LEVEL_SHORT[s['levels'][map_domain]]}"
+    points = [{"site_key": s["uuid"], "gps": s["gps"], "tooltip": tooltip(s)} for s in filtered_sites]
+    # A service ladder is an ordered CATEGORY, not a magnitude, so each domain
+    # keeps its fixed per-level colours rather than the quantile ramp the score
+    # maps use -- "Basic" means Basic regardless of who else is on screen.
+    metrics = [
+        map_helpers.categorical_metric(
+            d["key"], d["question"], [s["levels"][d["key"]] for s in filtered_sites],
+            color_of=lambda level: LEVEL_COLOR[level], label_of=lambda level: level,
+        )
+        for d in domains
+    ]
 
-    def popup(s):
-        lines = "<br>".join(f"{d['label']}: {LEVEL_SHORT[s['levels'][d['key']]]}" for d in domains)
-        return f"<b>{s['name']}</b><br>{s['atoll']} — {s['island']}<br>{lines}"
-
-    n_total = len(filtered_sites) or 1  # guard div-by-zero; filtered_sites is never empty here
-    level_counts = {l: sum(1 for s in filtered_sites if s["levels"][map_domain] == l) for l in levels}
-
-    m, view = build_folium_map(filtered_sites, marker_color, tooltip, popup, height_px=MAP_HEIGHT)
-    add_map_legend(
-        m, domain_labels[map_domain],
-        [
-            (LEVEL_MAP_COLOR_HEX[l], f"{LEVEL_SHORT[l]} ({round(100 * level_counts[l] / n_total)}%)")
-            for l in levels
-        ],
+    clicked_key = map_helpers.render_map(
+        points, metrics, key="jmp_map", height=MAP_HEIGHT, metric_title="Colour map by",
+        legend_note=None,
     )
-    map_state = st_folium(
-        m, use_container_width=True, height=MAP_HEIGHT, key="jmp_folium_map",
-        center=view["center"], zoom=view["zoom"],  # required for the fit to stick -- see fit_zoom
-        returned_objects=["last_object_clicked"],
-    )
-
-    clicked = (map_state or {}).get("last_object_clicked")
-    if clicked:
-        best = min(filtered_sites, key=lambda s: (s["gps"]["lat"] - clicked["lat"]) ** 2 + (s["gps"]["lon"] - clicked["lng"]) ** 2)
-        st.session_state.jmp_selected_site = best["uuid"]
+    if clicked_key and clicked_key != st.session_state.jmp_site_select:
+        st.session_state.jmp_site_select = clicked_key
+        st.rerun()
 
     st.divider()
 
@@ -181,12 +164,9 @@ def render_jmp_wash_tab():
             "Health center (or click a map marker above)",
             options=[s["uuid"] for s in ordered],
             format_func=lambda u: site_by_uuid[u]["name"],
-            index=[s["uuid"] for s in ordered].index(st.session_state.jmp_selected_site)
-            if st.session_state.jmp_selected_site in site_by_uuid else 0,
-            key="jmp_site_select",
+            key="jmp_site_select",  # no `index`: the key above is the state
         )
-        st.session_state.jmp_selected_site = picked
-        selected = site_by_uuid[st.session_state.jmp_selected_site]
+        selected = site_by_uuid[picked]
 
         overall_color = "#0ca30c" if selected["meets_jmp_basic_wash"] else "#94a3b8"
         overall_text = "Meets full JMP basic WASH" if selected["meets_jmp_basic_wash"] else "Does not meet all 5 domains"

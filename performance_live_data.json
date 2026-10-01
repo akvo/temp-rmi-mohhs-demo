@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-09-16T15:02:52+00:00",
+ "fetched_at": "2026-10-01T12:59:50+00:00",
  "rounds": {
   "2026-07": {
    "arno_ine": {
@@ -197,6 +197,21 @@
      "services_delivery": 4
     }
    },
+   "mejit": {
+    "overall": 71,
+    "points": 34,
+    "groups": {
+     "community_accountability": 4,
+     "community_health": 0,
+     "community_engagement": 2,
+     "staffing_credentials": 1,
+     "facility_structure": 9,
+     "facility_cleanliness": 7,
+     "facility_meds_storage": 2,
+     "services_reporting": 5,
+     "services_delivery": 4
+    }
+   },
    "wotje": {
     "overall": 88,
     "points": 42,
@@ -231,7 +246,7 @@
  },
  "meta": {
   "2026-07": {
-   "n_sites": 15,
+   "n_sites": 16,
    "total_sites": 18
   }
  }

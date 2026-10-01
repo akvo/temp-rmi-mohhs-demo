@@ -4,9 +4,9 @@ A single Streamlit app, three tabs, no sidebar:
 
 - **Performance Assessment** — score trends (July 2025 / Oct 2025 / Feb
   2026, plus any newer live-verified round) and improvement-plan tracking
-  for the 18 `Register=Y` health centers on the platform. Newer rounds are
-  layered on top of a fixed curated baseline — see **"Where the data comes
-  from"** below.
+  for the 18 `Register=Y` health centers on the platform, with a per-question-group
+  score breakdown. Newer rounds are layered on top of a fixed curated
+  baseline — see **"Where the data comes from"** below.
 - **Essential Meds & Supplies** — stock availability against the 112-item
   "NI HC - Essential Meds and Supplies Checklist" (form `1783385736711`):
   two independently scored sections (Essential Supplies, 52 items;
@@ -31,8 +31,10 @@ app.py                      entry point — page config, tabs, nothing else
 performance_tab.py          Performance Assessment tab (render_performance_tab)
 meds_tab.py                  Essential Meds & Supplies tab (render_meds_tab)
 jmp_wash_tab.py              JMP WASH tab (render_jmp_wash_tab)
-chart_helpers.py            shared theming + the Folium map builder all three tabs use
-                            (the four files above are the whole runtime — none of them touch the network)
+chart_helpers.py            shared theming all three tabs use
+map_helpers.py              the map component's Python side + the quantile colour scale
+map_component/index.html     the map itself — MapLibre GL, in-map controls and legend
+                            (the files above are the whole runtime — none of them touch the network)
 
 mis_client.py               shared MIS API client — credentials, login, pagination (build scripts only)
 performance_live.py          perf-round fetch, site-matching, dedup-by-latest-submission, merge-with-baseline
@@ -88,13 +90,63 @@ All three tabs read committed JSON — no network calls, no credentials, and
 the whole app renders in about a second. See "Where the data comes from"
 below for how to refresh the data.
 
+## Maps
+
+All three maps are **MapLibre GL JS**, as a small Streamlit component
+(`map_component/index.html` + `map_helpers.py`). No mapping Python package is
+involved; MapLibre loads from a CDN and the component talks to Streamlit over
+the documented postMessage protocol, so there is no build step.
+
+**Controls and legend live inside the map**, as real corner-anchored MapLibre
+controls: the measure picker and basemap picker top-left, the legend
+bottom-right. Switching measure or basemap is handled entirely in the browser
+— no Streamlit rerun, so it is instant. Only a marker *click* comes back to
+Python, because that drives the detail panel outside the map.
+
+- **"Colour markers by" picks the measure**: the overall score or any one of
+  the nine question groups on the Performance tab; a section or any one of the
+  29 checklist categories on Essential Meds; the five JMP domains on JMP WASH.
+  Groups and categories are shown as a percentage of their own maximum, so a
+  1-point and an 11-point group share one colour ramp.
+- **Markers are binned by quantile**, not by fixed thresholds, so the bins
+  always split the health centers actually on screen — change the atoll filter
+  and they re-split. Quantiles rank sites against each other, not against a
+  target; the legend says so and prints each bin's real range and count. Ties
+  are never split across bins, so a heavy tie yields fewer bins than requested
+  (a 1-point question group is 0% or 100%, hence two). That is honest, not a
+  bug. The JMP tab is the exception: a service ladder is an ordered *category*,
+  so each level keeps a fixed colour regardless of who else is on screen.
+- The marker ramp is a single hue, light→dark, validated (monotone lightness,
+  adjacent ΔL ≥ 0.06, light end 2.42:1 on a light surface, hue spread 4°). It
+  is orange rather than the usual sequential blue because every basemap here is
+  ocean and blue markers on blue water have no figure/ground separation. There
+  is no dark basemap for the same reason the ramp is validated: a dark surface
+  needs its own validated steps.
+- Basemaps are Esri raster tiles (Ocean, Street, Satellite) — token-free, one
+  provider, one attribution. Ocean is the default because it renders
+  bathymetry and reef outlines, so RMI's atoll chains read as places rather
+  than dots on a wash. The other free raster sources were checked and
+  rejected: OpenStreetMap's volunteer servers answer HTTP 418 "Access blocked"
+  for a deployed app, and CARTO's raster endpoint now returns an
+  "API KEY REQUIRED" tile.
+
+An earlier pass used pydeck/deck.gl. It was replaced because it cannot put
+controls *in* the map, and because its declarative JSON cannot supply
+`TileLayer`'s `renderSubLayers` callback — raster tiles failed as
+`GeoJsonLayer`, which forced a vector basemap, which drew RMI's thin reef
+rings sub-pixel, which in turn forced drawing the country's admin polygons as
+a separate layer just to make land visible. MapLibre's native raster sources
+removed that whole chain.
+
+Note the maps need WebGL. Normal browsers have it; very old ones or
+locked-down VDI setups may not.
+
 ## Where the data comes from
 
 **The app makes no API calls at runtime.** Every tab reads a JSON file
 committed to this repo. That means the deployed instance needs no MIS
-credentials, loads in about a second, and keeps serving when
-mohhs-mis.akvotest.org is down — which it is often enough (502s) that
-fetching at request time was a real availability risk.
+credentials, loads in about a second, and keeps serving whether or not the
+MIS is reachable.
 
 | File | Built by | Feeds |
 |---|---|---|
@@ -147,7 +199,17 @@ coverage and names anything it skipped or inferred.
   only surfaces when nothing newer with a stated round exists.
 - Site-matching for both joins a submission's `uuid` to its parent
   registration record's `uuid` on form `1783289494205`. One registration
-  listing is fetched and shared between the two.
+  listing is fetched and shared between the two. The canonical sites in
+  `performance_data.json` are matched to that listing **by registration
+  name**, with the stored `mis_datapoint_id` only as a fallback — the
+  September 2026 migration renumbered every datapoint id (adding
+  10,000,000) while leaving names and uuids intact, and an id-only join
+  resolved 0 of 18 sites.
+- Two guards exist because of that migration, since a broken join produces
+  empty output rather than an error: the script **aborts** if no
+  registration matches a canonical site, and **refuses** to overwrite a
+  snapshot with one containing fewer site-rounds (`--force` overrides, for
+  a genuine drop). A failed build exits non-zero and writes nothing.
 - Everything the script skips or infers is reported **by name** in its own
   summary output — read it before committing. In the UI, a health center
   whose round was inferred says so in its detail panel.
@@ -187,9 +249,18 @@ form (`1783387964086`) get picked up automatically by `build_live_data.py`.
 
 ## Data sources — API reference
 
-Base URL: `https://mohhs-mis.akvotest.org`. **Only the build scripts call
+Base URL: `https://mohhs.mis.akvo.org` (the instance moved here from
+`mohhs-mis.akvotest.org` in September 2026). **Only the build scripts call
 these endpoints** — the dashboard itself never does. All of them go through
 `mis_client.py`.
+
+The URL is **not** hardcoded into the call sites: `mis_client.get_base_url()`
+resolves it, in order, from the `MIS_BASE_URL` environment variable, then
+`st.secrets["mis"]["base_url"]`, then `base_url` in `.env`, then
+`DEFAULT_BASE_URL`. It is read per login rather than at import time, and the
+resolved value is logged at login so pointing at the wrong instance is
+obvious immediately instead of surfacing as a confusing 404. Moving the
+instance again is a config change, not a code change.
 
 | Endpoint | Method | Used by | Purpose |
 |---|---|---|---|

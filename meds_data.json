@@ -705,6 +705,443 @@
  },
  "rounds": {
   "2026-07": {
+   "arno_ine": {
+    "sections": {
+     "supplies": {
+      "score": 44,
+      "max": 52,
+      "pct": 85,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "hemoglobin_meter_test_strips_batteries",
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "fetal_doppler_batteries",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_sti_syndromic_management",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_connecting_tubes",
+         "iv_catheters",
+         "syringes_needles",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "well_child_care_for_patient_education",
+         "ncd_patient_education",
+         "family_planning",
+         "weaning_foods_and_early_child_nutrition"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms",
+         "hard_cover_notebooks_to_use_for_patient_registries"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 44,
+      "max": 60,
+      "pct": 73,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_suppository_120mg",
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "acetaminophen_suspension_160_mg_5_ml",
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": []
+       },
+       "gastro_intestinal": {
+        "have": [
+         "mylanta_or_maalox_suspension",
+         "famotidine_or_omeprazole_tablet_20mg",
+         "metoclopramide_tablet_10mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "clarithromycin_tablet_500mg",
+         "co_trimoxazole_suspension_200mg_40_mg_5_ml",
+         "ampicillin_injectable_1_gm_vial",
+         "ceftriaxone_injectable_1_gm_vial",
+         "metronidazole_tablet_250_mg"
+        ]
+       },
+       "eye_ear": {
+        "have": [
+         "gentamycin_or_tobramycin_eye_drops_can_use_for_ears"
+        ]
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": []
+       },
+       "anti_gout": {
+        "have": [
+         "allopurinol_tablet_300_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_tablet_25_mg",
+         "epinephrine_injection_1_1000"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "amlodipine_tablet_10mg",
+         "nifedipine_extended_release_tablet_30mg",
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "hctz_tablets_25mg",
+         "furosemide_tablets_40mg",
+         "furosemide_injection_50mg_vials"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "lindane_scabies_lice_lotion_or_shampoo",
+         "albendazole_or_mebendazole_tablet_200_mg"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_salbutamol_inhaler",
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper"
+        ]
+       },
+       "skin": {
+        "have": [
+         "neomycin_bacitracin_ointment"
+        ]
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg",
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg",
+         "insulin_regular_vials"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "vitamin_a_capsules_100_000_units",
+         "vitamin_a_capjel_200_000_units",
+         "child_multi_vitamins_with_fluoride_tablet_tablet",
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": [
+         "oxytocin_pitocin_injection_10_units_ml"
+        ]
+       }
+      }
+     }
+    },
+    "created": "24-08-2026 13:39:04",
+    "round_inferred": false,
+    "date": "2026-08"
+   },
+   "mili_enejet": {
+    "sections": {
+     "supplies": {
+      "score": 40,
+      "max": 52,
+      "pct": 77,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "bp_cuff_pediatric_and_adult",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_connecting_tubes",
+         "iv_catheters",
+         "syringes_needles",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "neonatal_ambu_bag",
+         "nebulizer_tubing_electric_or_batteries"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "ncd_patient_education",
+         "well_child_care_for_patient_education",
+         "weaning_foods_and_early_child_nutrition",
+         "family_planning"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms",
+         "hard_cover_notebooks_to_use_for_patient_registries"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 40,
+      "max": 60,
+      "pct": 67,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_suspension_160_mg_5_ml",
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": []
+       },
+       "gastro_intestinal": {
+        "have": [
+         "famotidine_or_omeprazole_tablet_20mg",
+         "mylanta_or_maalox_suspension",
+         "metoclopramide_tablet_10mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "amoxicillin_suspension_125_mg_5_ml",
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "metronidazole_suspension_125_mg_5_ml"
+        ]
+       },
+       "eye_ear": {
+        "have": []
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": [
+         "ketoconazole_or_terbinafine_or_griseofulvin_tablet_200_mg"
+        ]
+       },
+       "anti_gout": {
+        "have": [
+         "allopurinol_tablet_300_mg",
+         "colchicine_capsule_0_6_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_tablet_25_mg",
+         "epinephrine_injection_1_1000"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "nifedipine_extended_release_tablet_30mg",
+         "amlodipine_tablet_10mg",
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "hctz_tablets_25mg",
+         "furosemide_injection_50mg_vials",
+         "furosemide_tablets_40mg"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "albendazole_or_mebendazole_tablet_200_mg"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper",
+         "albuterol_salbutamol_inhaler"
+        ]
+       },
+       "skin": {
+        "have": [
+         "betamethazone_or_triamcinolone_or_hydrocortisone_cream_or_lotion_or_ointment",
+         "neomycin_bacitracin_ointment"
+        ]
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg",
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg",
+         "insulin_regular_vials"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "ors_oral_rehydration_solution_oral_satchet",
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "vitamin_a_capsules_100_000_units",
+         "child_multi_vitamins_with_fluoride_tablet_tablet",
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": []
+       }
+      }
+     }
+    },
+    "created": "24-08-2026 13:38:52",
+    "round_inferred": false,
+    "date": "2026-08"
+   },
    "ebon": {
     "sections": {
      "supplies": {
@@ -1147,6 +1584,453 @@
     "round_inferred": false,
     "date": "2026-08"
    },
+   "ailinglaplap_woja": {
+    "sections": {
+     "supplies": {
+      "score": 44,
+      "max": 52,
+      "pct": 85,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "fetal_doppler_batteries",
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_mhgap",
+         "reference_wall_charts_sti_syndromic_management",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_connecting_tubes",
+         "syringes_needles",
+         "iv_catheters",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "ncd_patient_education",
+         "well_child_care_for_patient_education",
+         "family_planning",
+         "weaning_foods_and_early_child_nutrition",
+         "prenatal_post_partum_care_flipcharts"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms",
+         "hard_cover_notebooks_to_use_for_patient_registries"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 46,
+      "max": 60,
+      "pct": 77,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_suspension_160_mg_5_ml",
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "acetaminophen_suppository_120mg",
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": []
+       },
+       "gastro_intestinal": {
+        "have": [
+         "mylanta_or_maalox_suspension",
+         "famotidine_or_omeprazole_tablet_20mg",
+         "metoclopramide_tablet_10mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "co_trimoxazole_suspension_200mg_40_mg_5_ml",
+         "ampicillin_injectable_1_gm_vial",
+         "ceftriaxone_injectable_1_gm_vial",
+         "metronidazole_suspension_125_mg_5_ml",
+         "metronidazole_tablet_250_mg"
+        ]
+       },
+       "eye_ear": {
+        "have": []
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": [
+         "ketoconazole_or_terbinafine_or_griseofulvin_tablet_200_mg"
+        ]
+       },
+       "anti_gout": {
+        "have": [
+         "allopurinol_tablet_300_mg",
+         "colchicine_capsule_0_6_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_syrup_12_5_mg_5_ml",
+         "diphenhydramine_tablet_25_mg",
+         "epinephrine_injection_1_1000"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "amlodipine_tablet_10mg",
+         "nifedipine_extended_release_tablet_30mg",
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "hctz_tablets_25mg",
+         "furosemide_tablets_40mg",
+         "furosemide_injection_50mg_vials"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "albendazole_or_mebendazole_tablet_200_mg"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_salbutamol_inhaler",
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper"
+        ]
+       },
+       "skin": {
+        "have": [
+         "betamethazone_or_triamcinolone_or_hydrocortisone_cream_or_lotion_or_ointment",
+         "neomycin_bacitracin_ointment"
+        ]
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg",
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg",
+         "insulin_70_30_vials"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "ors_oral_rehydration_solution_oral_satchet",
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "child_multi_vitamins_with_fluoride_tablet_tablet",
+         "vitamin_a_capsules_100_000_units",
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": [
+         "oxytocin_pitocin_injection_10_units_ml"
+        ]
+       }
+      }
+     }
+    },
+    "created": "17-08-2026 14:32:36",
+    "round_inferred": false,
+    "date": "2026-08"
+   },
+   "jabat": {
+    "sections": {
+     "supplies": {
+      "score": 41,
+      "max": 52,
+      "pct": 79,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "fetal_doppler_batteries",
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_connecting_tubes",
+         "iv_catheters",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "neonatal_ambu_bag",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "well_child_care_for_patient_education",
+         "family_planning",
+         "weaning_foods_and_early_child_nutrition"
+        ]
+       },
+       "communications": {
+        "have": [
+         "radio_ssb",
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 46,
+      "max": 60,
+      "pct": 77,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_suspension_160_mg_5_ml",
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "acetaminophen_suppository_120mg",
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": [
+         "nitroglycerine_tablet_sub_lingual_0_4mg"
+        ]
+       },
+       "gastro_intestinal": {
+        "have": [
+         "mylanta_or_maalox_suspension",
+         "famotidine_or_omeprazole_tablet_20mg",
+         "metoclopramide_tablet_10mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "clarithromycin_tablet_500mg",
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "co_trimoxazole_suspension_200mg_40_mg_5_ml",
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "ceftriaxone_injectable_1_gm_vial",
+         "ampicillin_injectable_1_gm_vial",
+         "metronidazole_suspension_125_mg_5_ml",
+         "metronidazole_tablet_250_mg"
+        ]
+       },
+       "eye_ear": {
+        "have": []
+       },
+       "anti_seizure": {
+        "have": [
+         "phenytoin_tablet_100_mg"
+        ]
+       },
+       "anti_fungal": {
+        "have": []
+       },
+       "anti_gout": {
+        "have": [
+         "colchicine_capsule_0_6_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_syrup_12_5_mg_5_ml",
+         "diphenhydramine_tablet_25_mg",
+         "epinephrine_injection_1_1000"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "amlodipine_tablet_10mg",
+         "hctz_tablets_25mg",
+         "furosemide_injection_50mg_vials",
+         "furosemide_tablets_40mg"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "lindane_scabies_lice_lotion_or_shampoo",
+         "albendazole_or_mebendazole_tablet_200_mg"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "depo_provera",
+         "oral_contraceptive_pills"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper",
+         "albuterol_salbutamol_inhaler"
+        ]
+       },
+       "skin": {
+        "have": []
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg",
+         "insulin_regular_vials",
+         "insulin_70_30_vials",
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "ors_oral_rehydration_solution_oral_satchet",
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "vitamin_a_capsules_100_000_units",
+         "vitamin_a_capjel_200_000_units",
+         "child_multi_vitamins_with_fluoride_tablet_tablet",
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": [
+         "oxytocin_pitocin_injection_10_units_ml"
+        ]
+       }
+      }
+     }
+    },
+    "created": "15-08-2026 15:38:16",
+    "round_inferred": false,
+    "date": "2026-08"
+   },
    "mejit": {
     "sections": {
      "supplies": {
@@ -1374,6 +2258,239 @@
      }
     },
     "created": "28-07-2026 01:02:17",
+    "round_inferred": false,
+    "date": "2026-07"
+   },
+   "namu_majkon": {
+    "sections": {
+     "supplies": {
+      "score": 46,
+      "max": 52,
+      "pct": 88,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "fetal_doppler_batteries",
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_imci_integrated_management_of_childhood_illness",
+         "reference_wall_charts_sti_syndromic_management",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_connecting_tubes",
+         "iv_catheters",
+         "syringes_needles",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "ncd_patient_education",
+         "well_child_care_for_patient_education",
+         "prenatal_post_partum_care_flipcharts",
+         "family_planning",
+         "weaning_foods_and_early_child_nutrition"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms",
+         "hard_cover_notebooks_to_use_for_patient_registries"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 51,
+      "max": 60,
+      "pct": 85,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "acetaminophen_suspension_160_mg_5_ml",
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": [
+         "nitroglycerine_tablet_sub_lingual_0_4mg"
+        ]
+       },
+       "gastro_intestinal": {
+        "have": [
+         "metoclopramide_tablet_10mg",
+         "mylanta_or_maalox_suspension",
+         "famotidine_or_omeprazole_tablet_20mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "amoxicillin_suspension_125_mg_5_ml",
+         "clarithromycin_tablet_500mg",
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "co_trimoxazole_suspension_200mg_40_mg_5_ml",
+         "ampicillin_injectable_1_gm_vial",
+         "ceftriaxone_injectable_1_gm_vial",
+         "metronidazole_tablet_250_mg",
+         "metronidazole_suspension_125_mg_5_ml"
+        ]
+       },
+       "eye_ear": {
+        "have": [
+         "gentamycin_or_tobramycin_eye_drops_can_use_for_ears"
+        ]
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": [
+         "ketoconazole_or_terbinafine_or_griseofulvin_tablet_200_mg"
+        ]
+       },
+       "anti_gout": {
+        "have": [
+         "colchicine_capsule_0_6_mg",
+         "allopurinol_tablet_300_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_syrup_12_5_mg_5_ml",
+         "diphenhydramine_tablet_25_mg",
+         "epinephrine_injection_1_1000"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "amlodipine_tablet_10mg",
+         "nifedipine_extended_release_tablet_30mg",
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "hctz_tablets_25mg",
+         "furosemide_tablets_40mg",
+         "furosemide_injection_50mg_vials"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "albendazole_or_mebendazole_tablet_200_mg"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper",
+         "albuterol_salbutamol_inhaler"
+        ]
+       },
+       "skin": {
+        "have": []
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg",
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg",
+         "insulin_70_30_vials",
+         "insulin_regular_vials"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "ors_oral_rehydration_solution_oral_satchet",
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous",
+         "d5lr_or_d5ns_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "vitamin_a_capsules_100_000_units",
+         "vitamin_a_capjel_200_000_units",
+         "child_multi_vitamins_with_fluoride_tablet_tablet",
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": [
+         "oxytocin_pitocin_injection_10_units_ml",
+         "misoprostol_cytotec_tablets_20mg"
+        ]
+       }
+      }
+     }
+    },
+    "created": "24-07-2026 10:46:51",
     "round_inferred": false,
     "date": "2026-07"
    },
@@ -1981,6 +3098,411 @@
      }
     },
     "created": "22-07-2026 17:47:53",
+    "round_inferred": false,
+    "date": "2026-07"
+   },
+   "ujae": {
+    "sections": {
+     "supplies": {
+      "score": 43,
+      "max": 52,
+      "pct": 83,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape",
+         "tape_measure_for_fundal_height"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "fetal_doppler_batteries",
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "medical_eligibility_wheel_for_fp",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "iv_catheters",
+         "iv_connecting_tubes",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "ob_pack_scissors_cord_clamp_tie_drapes",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher",
+         "reference_wall_charts_sti_syndromic_management"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "family_planning",
+         "well_child_care_for_patient_education",
+         "prenatal_post_partum_care_flipcharts",
+         "weaning_foods_and_early_child_nutrition",
+         "ncd_patient_education"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket",
+         "mop",
+         "brush",
+         "soap"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 28,
+      "max": 60,
+      "pct": 47,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "acetaminophen_suspension_160_mg_5_ml",
+         "acetaminophen_tablet_325_mg_or_500mg",
+         "acetaminophen_suppository_120mg",
+         "aspirin_tablet_81_mg_or_325mg"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": []
+       },
+       "gastro_intestinal": {
+        "have": [
+         "metoclopramide_tablet_10mg"
+        ]
+       },
+       "antibiotics": {
+        "have": [
+         "co_trimoxazole_bactrim_septra_sulfameth_trimethoprim_tablets_800_160_mg",
+         "ceftriaxone_injectable_1_gm_vial",
+         "metronidazole_tablet_250_mg",
+         "metronidazole_suspension_125_mg_5_ml"
+        ]
+       },
+       "eye_ear": {
+        "have": [
+         "gentamycin_or_tobramycin_eye_drops_can_use_for_ears"
+        ]
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": [
+         "ketoconazole_or_terbinafine_or_griseofulvin_tablet_200_mg"
+        ]
+       },
+       "anti_gout": {
+        "have": []
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_syrup_12_5_mg_5_ml",
+         "diphenhydramine_tablet_25_mg"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "amlodipine_tablet_10mg",
+         "nifedipine_extended_release_tablet_30mg"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": []
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_salbutamol_inhaler",
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper"
+        ]
+       },
+       "skin": {
+        "have": [
+         "betamethazone_or_triamcinolone_or_hydrocortisone_cream_or_lotion_or_ointment"
+        ]
+       },
+       "diabetes_meds": {
+        "have": [
+         "metformin_tablet_500mg"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous",
+         "ors_oral_rehydration_solution_oral_satchet",
+         "d5lr_or_d5ns_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "prenatal_vitamins_with_iron_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": []
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": []
+       }
+      }
+     }
+    },
+    "created": "22-07-2026 09:21:58",
+    "round_inferred": false,
+    "date": "2026-07"
+   },
+   "lae": {
+    "sections": {
+     "supplies": {
+      "score": 37,
+      "max": 52,
+      "pct": 71,
+      "score_derived": false,
+      "categories": {
+       "testing_equipment": {
+        "have": [
+         "glucose_meter_strips_batteries",
+         "pregnancy_tests",
+         "bp_cuff_pediatric_and_adult",
+         "pulse_oximeter",
+         "adult_scale",
+         "infant_weight_scale",
+         "infant_small_child_length_board",
+         "adult_height_board_or_measuring_stick",
+         "mid_upper_arm_circumference_tape"
+        ]
+       },
+       "clinic_equipment": {
+        "have": [
+         "medical_eligibility_wheel_for_fp",
+         "ob_wheel_for_gestational_age_and_due_dates",
+         "reference_wall_charts_who_pen_for_bmi_and_risk_assessment_and_treatment_algorithms",
+         "reference_wall_charts_mhgap",
+         "stethoscope",
+         "otoscope_batteries",
+         "dressing_tray_with_tape_gauze_betadine_normal_saline_gloves",
+         "laceration_sets_scalpels_forceps_needle_holders_gauze_syringe_tape_sutures",
+         "iv_catheters",
+         "iv_connecting_tubes",
+         "syringes_needles",
+         "nebulizer_tubing_electric_or_batteries",
+         "folding_patient_stretcher"
+        ]
+       },
+       "flip_charts": {
+        "have": [
+         "well_child_care_for_patient_education",
+         "prenatal_post_partum_care_flipcharts",
+         "family_planning",
+         "weaning_foods_and_early_child_nutrition"
+        ]
+       },
+       "communications": {
+        "have": [
+         "cell_phone_functional_with_minutes_or_functioning_starlink"
+        ]
+       },
+       "patient_charting_other_forms": {
+        "have": [
+         "child_road_to_health_yellow_cards",
+         "ncd_patient_carried_healthy_lifestyle_booklets",
+         "anc_patient_carried_record_cards",
+         "death_and_birth_forms",
+         "hard_cover_notebooks_to_use_for_patient_registries"
+        ]
+       },
+       "supplies_for_patients": {
+        "have": [
+         "condoms_male_female"
+        ]
+       },
+       "cleaning_supplies": {
+        "have": [
+         "chlorine_bleach",
+         "isopropyl_alcohol",
+         "broom",
+         "bucket"
+        ]
+       }
+      }
+     },
+     "meds": {
+      "score": 31,
+      "max": 60,
+      "pct": 52,
+      "score_derived": false,
+      "categories": {
+       "analgesics": {
+        "have": [
+         "aspirin_tablet_81_mg_or_325mg",
+         "diclofenac_or_ibuprofen_naproxen_ketorolac_or_indomethacin_tablet_any_size"
+        ]
+       },
+       "anesthetics": {
+        "have": [
+         "lidocaine_injectable_1_or_2_vial"
+        ]
+       },
+       "anti_anginal": {
+        "have": []
+       },
+       "gastro_intestinal": {
+        "have": []
+       },
+       "antibiotics": {
+        "have": [
+         "amoxicillin_capsule_250_mg_or_500mg",
+         "ampicillin_injectable_1_gm_vial",
+         "ceftriaxone_injectable_1_gm_vial",
+         "metronidazole_tablet_250_mg"
+        ]
+       },
+       "eye_ear": {
+        "have": [
+         "gentamycin_or_tobramycin_eye_drops_can_use_for_ears"
+        ]
+       },
+       "anti_seizure": {
+        "have": []
+       },
+       "anti_fungal": {
+        "have": [
+         "ketoconazole_or_terbinafine_or_griseofulvin_tablet_200_mg"
+        ]
+       },
+       "anti_gout": {
+        "have": [
+         "allopurinol_tablet_300_mg"
+        ]
+       },
+       "allergy": {
+        "have": [
+         "diphenhydramine_tablet_25_mg"
+        ]
+       },
+       "anti_hypertensives_diuretics": {
+        "have": [
+         "lisinopril_or_enalapril_or_irbesartan_tablets",
+         "amlodipine_tablet_10mg",
+         "hctz_tablets_25mg",
+         "furosemide_tablets_40mg",
+         "furosemide_injection_50mg_vials"
+        ]
+       },
+       "corticosteriods": {
+        "have": [
+         "prednisone_tablet_10_or_20mg"
+        ]
+       },
+       "anti_parasitics": {
+        "have": [
+         "lindane_scabies_lice_lotion_or_shampoo"
+        ]
+       },
+       "contraceptives": {
+        "have": [
+         "oral_contraceptive_pills",
+         "depo_provera"
+        ]
+       },
+       "respiratory": {
+        "have": [
+         "albuterol_salbutamol_inhaler",
+         "albuterol_soln_for_nebulizer_single_dose_units_or_dropper"
+        ]
+       },
+       "skin": {
+        "have": [
+         "neomycin_bacitracin_ointment"
+        ]
+       },
+       "diabetes_meds": {
+        "have": [
+         "glyburide_or_glimipramide_glimenclamide_glipizide_tablet_5mg",
+         "insulin_regular_vials",
+         "insulin_70_30_vials"
+        ]
+       },
+       "hydration_solutions": {
+        "have": [
+         "ors_oral_rehydration_solution_oral_satchet",
+         "0_9_ns_normal_saline_or_lr_lactated_ringer_s_intravenous"
+        ]
+       },
+       "vitamins_minerals": {
+        "have": [
+         "prenatal_vitamins_with_iron_tablet",
+         "child_multi_vitamins_with_fluoride_tablet_tablet"
+        ]
+       },
+       "anti_cholesterol": {
+        "have": [
+         "atorvastatin_or_simvastatin_or_other_statin_tablet_20mg"
+        ]
+       },
+       "dental": {
+        "have": []
+       },
+       "uterine_contraction": {
+        "have": []
+       }
+      }
+     }
+    },
+    "created": "20-07-2026 18:47:01",
     "round_inferred": false,
     "date": "2026-07"
    },
@@ -2636,7 +4158,7 @@
      }
     },
     "created": "13-07-2026 19:19:39",
-    "round_inferred": true,
+    "round_inferred": false,
     "date": "2026-07"
    }
   }
@@ -2644,16 +4166,14 @@
  "meta": {
   "rounds": {
    "2026-07": {
-    "n_sites": 9,
+    "n_sites": 16,
     "total_sites": 18,
-    "inferred_sites": [
-     "wotje"
-    ]
+    "inferred_sites": []
    }
   },
   "skipped_unknown_site": 1,
   "skipped_no_round": 0,
-  "n_submissions": 13
+  "n_submissions": 20
  },
- "fetched_at": "2026-09-16T15:03:15+00:00"
+ "fetched_at": "2026-10-01T12:59:56+00:00"
 }

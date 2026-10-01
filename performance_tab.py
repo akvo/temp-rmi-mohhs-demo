@@ -1,5 +1,5 @@
 """Performance Assessment tab — score trends (Jul 2025 / Oct 2025 / Feb 2026,
-plus any newer live round) and improvement-plan tracking for the 18
+plus any newer round) and per-question-group score breakdowns for the 18
 Register=Y health centers.
 
 The 3 historical rounds always come from the curated performance_data.json
@@ -15,15 +15,14 @@ See VISUALS.md for what each element below shows and where its data comes from.
 """
 import calendar
 import json
-import re
 from pathlib import Path
 
 import plotly.graph_objects as go
 import streamlit as st
-from streamlit_folium import st_folium
 
+import map_helpers
 import performance_live
-from chart_helpers import FONT_FAMILY, TEXT_GRAY, add_map_legend, apply_chart_theme, atoll_multiselect, build_folium_map, rgba
+from chart_helpers import FONT_FAMILY, TEXT_GRAY, apply_chart_theme, atoll_multiselect, rgba
 
 HERE = Path(__file__).resolve().parent
 DATA_PATH = HERE / "performance_data.json"
@@ -36,10 +35,6 @@ BAND_GREEN, BAND_AMBER, BAND_RED = "#22a06b", "#f2a93b", "#e5484d"
 # Score bands. Named so band_color() and the legend caption can never drift
 # apart -- the caption is built from these, not retyped.
 BAND_GREEN_FROM, BAND_AMBER_FROM = 55, 35
-# folium.Icon only accepts a fixed named-color palette (no arbitrary hex)
-MAP_ABOVE, MAP_BELOW = "darkgreen", "red"
-# hex equivalents of the above, for the legend swatches (Leaflet.awesome-markers palette)
-MAP_ABOVE_HEX, MAP_BELOW_HEX = "#728224", "#D63E2A"
 MAP_HEIGHT = 560
 
 
@@ -93,6 +88,36 @@ def load_merged_performance_data():
 
 
 BREAKDOWN_TRACK = "#eef1f5"  # unscored remainder of each group's bar
+
+OVERALL_METRIC = "overall"
+
+
+def map_metrics(group_rounds):
+    """[(key, label, value_fn)] the map can colour by: the overall score, plus
+    one entry per scored question group (Community accountability, Staffing
+    credentials, Facility: structure, ...). Group entries only appear once
+    some round carries a per-group breakdown, since that is the only source
+    for them -- the curated baseline rounds have overall scores alone.
+
+    value_fn(site) -> 0-100 or None. Groups are returned as a percentage of
+    their own maximum so a 1-point group and an 11-point group are on the
+    same scale and can share one colour ramp.
+    """
+    metrics = [(OVERALL_METRIC, "Overall score", lambda s: s["latest_score"])]
+    if not group_rounds:
+        return metrics
+
+    def group_value(group):
+        def value(site):
+            for r in reversed(group_rounds):
+                groups = site["scores"].get(r, {}).get("groups")
+                if groups and group["key"] in groups:
+                    return 100 * groups[group["key"]] / group["max_points"]
+            return None
+        return value
+
+    metrics += [(g["key"], g["short"], group_value(g)) for g in performance_live.SCORE_GROUPS]
+    return metrics
 
 
 def latest_round_with_groups(site, rounds):
@@ -175,26 +200,6 @@ def render_score_breakdown(site, rounds, group_rounds):
                     config={"displayModeBar": False, "scrollZoom": False})
 
 
-PLAN_SECTION_KEY = re.compile(r"^(\d{4}-\d{2})_(.+)$")
-
-
-def plan_sections(sites):
-    """{suffix: (round_key, data_key)} for the improvement-plan sections
-    present in the data, e.g. {"new_plan": ("2026-02", "2026-02_new_plan")}.
-
-    The round each section belongs to is read off its own key rather than
-    written into the UI, so when a newer plan is graduated into the curated
-    baseline the tab relabels itself instead of quietly showing last
-    round's heading over this round's content."""
-    found = {}
-    for site in sites:
-        for key in site.get("improvement_plan", {}):
-            m = PLAN_SECTION_KEY.match(key)
-            if m and m.group(2) not in found:
-                found[m.group(2)] = (m.group(1), key)
-    return found
-
-
 def improvement_text(site):
     pts = site["improvement_pts"]
     if pts is None:
@@ -211,7 +216,6 @@ def render_performance_tab():
 
     data, has_snapshot = load_merged_performance_data()
     sites = data["sites"]
-    median = data["median_latest_score"]  # fixed benchmark over every site, independent of the filter below
     round_source = data.get("round_source", {r: "static" for r in data["rounds"]})
     latest_round = data["rounds"][-1]
     # Rounds that carry a per-question-group breakdown (MIS snapshot rounds
@@ -243,7 +247,8 @@ def render_performance_tab():
     all_atolls = sorted({s["atoll"] for s in sites})
     selected_atolls = atoll_multiselect(
         "Filter by atoll/island", all_atolls, key="perf_atoll_filter",
-        help=f"Scopes the ranked chart and map below. The median score line stays fixed to all {len(sites)} sites.",
+        help="Scopes the ranked chart and map below. Map colour bins are quantiles of "
+             "whatever is shown, so they re-split across the health centers left after filtering.",
     )
     filtered_sites = [s for s in sites if s["atoll"] in selected_atolls]
 
@@ -254,51 +259,33 @@ def render_performance_tab():
     # -------------------------------------------------------------- Map
     st.subheader("Map")
     st.caption(
-        f"🏥 colored by whether the {round_label(latest_round)} score is above or below the "
-        f"median ({median:.0f}%). Hover a marker for a quick look, click one to load its plan below. "
-        "Use the layer control (top right) to switch basemap, or the +/- to zoom."
+        "🏥 colour = quantiles of the measure picked **in the map** (top left) — equal-sized "
+        "groups across the health centers shown. Hover for detail, click to load one on the right."
     )
 
     gps_sites = [s for s in filtered_sites if s["gps"]]
 
-    def marker_color(s):
-        return MAP_ABOVE if s["above_median"] else MAP_BELOW if s["above_median"] is False else "gray"
+    def tooltip(site):
+        who = " & ".join(x for x in (site["officers"].get("mayor"), site["officers"].get("ha")) if x)
+        rows = [f"<b>{site['display_name']}</b>"]
+        if who:
+            rows.append(who)
+        rows.append(f"Overall score: {site['latest_score']}%")
+        rows.append(improvement_text(site))
+        return "<br>".join(rows)
 
-    def tooltip(s):
-        return f"{s['display_name']} — {s['latest_score']}%"
+    points = [{"site_key": s["site_key"], "gps": s["gps"], "tooltip": tooltip(s)} for s in gps_sites]
+    metrics = [
+        map_helpers.build_metric(key, label, [value_of(s) for s in gps_sites])
+        for key, label, value_of in map_metrics(group_rounds)
+    ]
 
-    def popup(s):
-        who = " & ".join(x for x in (s["officers"].get("mayor"), s["officers"].get("ha")) if x)
-        band = "above" if s["above_median"] else "below" if s["above_median"] is False else "n/a vs."
-        return (
-            f"<b>{s['display_name']}</b><br>{who}<br>"
-            f"Score: {s['latest_score']}% ({band} median)<br>{improvement_text(s)}"
-        )
-
-    n_above = sum(1 for s in gps_sites if s["above_median"])
-    n_below = sum(1 for s in gps_sites if s["above_median"] is False)
-    n_total = len(gps_sites) or 1  # guard div-by-zero; gps_sites is never empty in practice
-
-    m, view = build_folium_map(gps_sites, marker_color, tooltip, popup, height_px=MAP_HEIGHT)
-    add_map_legend(
-        m, f"vs. median ({median:.0f}%)",
-        [
-            (MAP_ABOVE_HEX, f"Above median ({round(100 * n_above / n_total)}%)"),
-            (MAP_BELOW_HEX, f"Below median ({round(100 * n_below / n_total)}%)"),
-        ],
+    clicked_key = map_helpers.render_map(
+        points, metrics, key="perf_map", height=MAP_HEIGHT, metric_title="Colour markers by",
     )
-    map_state = st_folium(
-        m, use_container_width=True, height=MAP_HEIGHT, key="perf_folium_map",
-        center=view["center"], zoom=view["zoom"],  # required for the fit to stick -- see fit_zoom
-        returned_objects=["last_object_clicked"],
-    )
-
-    clicked = (map_state or {}).get("last_object_clicked")
-    if clicked:
-        # Folium's click event doesn't carry our site_key through — match the
-        # clicked lat/lng back to the site we placed there (exact same floats).
-        best = min(gps_sites, key=lambda s: (s["gps"]["lat"] - clicked["lat"]) ** 2 + (s["gps"]["lon"] - clicked["lng"]) ** 2)
-        st.session_state.perf_site_select = best["site_key"]
+    if clicked_key and clicked_key != st.session_state.perf_site_select:
+        st.session_state.perf_site_select = clicked_key
+        st.rerun()  # redraw the detail panel, which this run already passed
 
     st.divider()
 
@@ -371,7 +358,7 @@ def render_performance_tab():
                 unsafe_allow_html=True,
             )
 
-        st.caption("👆 Click any bar to load its score breakdown and improvement plan on the right — clicking any round selects the same site.")
+        st.caption("👆 Click any bar to load its score breakdown on the right — clicking any round selects the same site.")
 
         # progress-since-baseline bubble, one per site, in its own fixed-position
         # column to the right of the bars so they line up regardless of bar length
@@ -450,7 +437,6 @@ def render_performance_tab():
             key="perf_site_select",  # no `index`: the key above is the state
         )
         selected = site_by_key[picked]
-        plan = selected["improvement_plan"]
 
         score_color = band_color(selected["latest_score"])
         who = " & ".join(x for x in (selected["officers"].get("mayor"), selected["officers"].get("ha")) if x)
@@ -469,52 +455,3 @@ def render_performance_tab():
         )
 
         render_score_breakdown(selected, data["rounds"], group_rounds)
-
-        st.info(plan["ai_summary"], icon="✨")
-
-        sections = plan_sections(sites)
-        new_round, new_key = sections.get("new_plan", (None, None))
-        status_round, status_key = sections.get("status", (None, None))
-        actions_round, _ = sections.get("actions", (None, None))
-
-        new_tab_label = f"{round_label(new_round)} new plan" if new_round else "New plan"
-        # The status section records how the *previous* round's plan was doing
-        # when the later round assessed it, so its label names both rounds --
-        # the old fixed "Oct 2025 status" labelled Feb 2026 content.
-        status_tab_label = (
-            f"{round_label(actions_round)} plan status"
-            if actions_round else (f"{round_label(status_round)} status" if status_round else "Plan status")
-        )
-
-        tab_new, tab_status = st.tabs([new_tab_label, status_tab_label])
-        with tab_new:
-            new_plan = plan.get(new_key) if new_key else None
-            if not new_plan:
-                st.caption(f"No {new_tab_label.lower()} recorded for this site.")
-            else:
-                for cat, cat_label in (("ha", "Health Assistant"), ("local_govt", "Local Government"), ("oihcs", "OIHCS")):
-                    entries = new_plan.get(cat) or []
-                    if not entries:
-                        continue
-                    st.markdown(f"_{cat_label}_")
-                    for item in entries:
-                        st.markdown(f"- {item}")
-
-        with tab_status:
-            status = plan.get(status_key) if status_key else None
-            if actions_round and status_round:
-                st.caption(
-                    f"Where the {round_label(actions_round)} improvement plan stood when it was "
-                    f"assessed at {round_label(status_round)}."
-                )
-            if not status:
-                st.caption(f"No {status_tab_label.lower()} recorded for this site.")
-            else:
-                for cat, cat_label in (("ha", "Health Assistant"), ("local_govt", "Local Government"), ("oihcs", "OIHCS")):
-                    entries = status.get(cat) or []
-                    if not entries:
-                        continue
-                    st.markdown(f"_{cat_label}_")
-                    for e in entries:
-                        mark = {"True": "✅", "False": "❌"}.get(str(e["done"]), "❔")
-                        st.markdown(f"- {mark} {e['item']}")

@@ -16,9 +16,9 @@ from pathlib import Path
 
 import plotly.graph_objects as go
 import streamlit as st
-from streamlit_folium import st_folium
 
-from chart_helpers import FONT_FAMILY, TEXT_GRAY, add_map_legend, apply_chart_theme, atoll_multiselect, build_folium_map, rgba
+import map_helpers
+from chart_helpers import FONT_FAMILY, TEXT_GRAY, apply_chart_theme, atoll_multiselect, rgba
 
 HERE = Path(__file__).resolve().parent
 # The canonical 18-site registry (display name, atoll, GPS) that
@@ -37,20 +37,12 @@ GOOD_FROM, PARTIAL_FROM = 80, 50
 
 SECTION_COLOR = {"meds": "#7c3aed", "supplies": "#0e7490"}
 TRACK = "#eef1f5"
-MAP_GOOD, MAP_PARTIAL, MAP_LOW = "darkgreen", "orange", "red"
 MAP_HEIGHT = 520
-MAP_HEX = {MAP_GOOD: "#728224", MAP_PARTIAL: "#F69730", MAP_LOW: "#D63E2A"}
 
 def band_color(pct):
     if pct is None:
         return "#94a3b8"
     return BAND_GOOD if pct >= GOOD_FROM else BAND_PARTIAL if pct >= PARTIAL_FROM else BAND_LOW
-
-
-def band_map_color(pct):
-    if pct is None:
-        return "gray"
-    return MAP_GOOD if pct >= GOOD_FROM else MAP_PARTIAL if pct >= PARTIAL_FROM else MAP_LOW
 
 
 def round_label(r):
@@ -71,6 +63,33 @@ def load_meds_data():
     if not DATA_PATH.exists():
         return None
     return json.loads(DATA_PATH.read_text())
+
+
+def map_metrics(schema):
+    """[(key, label, value_fn)] the map can colour by: each scored section,
+    then every individual checklist category (Testing Equipment, Antibiotics,
+    Diabetes meds, ...). Categories are a percentage of their own item count,
+    so a 1-item and a 19-item category share one colour ramp.
+
+    Keys are prefixed to stay unique -- a section and a category could
+    otherwise collide on the same name.
+    """
+    metrics = []
+    for section in schema["sections"]:
+        key = section["key"]
+        metrics.append((f"section:{key}", section["label"],
+                        lambda rec, k=key: rec["sections"][k]["pct"]))
+    for section in schema["sections"]:
+        for cat in section["categories"]:
+            if not cat["max_points"]:
+                continue
+            metrics.append((
+                f"cat:{section['key']}:{cat['key']}",
+                f"{section['short']} — {cat['label']}",
+                lambda rec, sk=section["key"], ck=cat["key"], m=cat["max_points"]:
+                    100 * len(rec["sections"][sk]["categories"][ck]["have"]) / m,
+            ))
+    return metrics
 
 
 def section_by_key(schema, key):
@@ -214,37 +233,33 @@ def render_meds_tab():
 
     # ----------------------------------------------------------------- Map
     st.subheader("Map")
-    st.caption(f"🏥 colored by {meds_label.lower()} availability. "
-               "Hover for both scores, click to load the checklist below.")
+    st.caption(
+        "🏥 colour = quantiles of the measure picked **in the map** (top left) — a whole section, "
+        "or any one of the checklist categories. Hover for detail, click to load one on the right."
+    )
+
     gps_sites = [s for s in filtered if s["gps"]]
 
-    def popup(s):
-        return (f"<b>{s['display_name']}</b><br>{meds_label}: {s['meds_pct']}%"
-                f"<br>{supplies_label}: {s['supplies_pct']}%")
+    def tooltip(site):
+        rec = site["record"]
+        rows = [f"<b>{site['display_name']}</b>"]
+        rows += [f"{sec['label']}: {rec['sections'][sec['key']]['pct']}%" for sec in schema["sections"]]
+        return "<br>".join(rows)
 
-    m, view = build_folium_map(
-        gps_sites,
-        lambda s: band_map_color(s["meds_pct"]),
-        lambda s: f"{s['display_name']} — meds {s['meds_pct']}%, supplies {s['supplies_pct']}%",
-        popup,
-        height_px=MAP_HEIGHT,
-    )
-    counts = {c: sum(1 for s in gps_sites if band_map_color(s["meds_pct"]) == c) for c in (MAP_GOOD, MAP_PARTIAL, MAP_LOW)}
-    total_gps = len(gps_sites) or 1
-    add_map_legend(m, f"{meds_label} in stock", [
-        (MAP_HEX[MAP_GOOD], f"≥{GOOD_FROM}% ({round(100 * counts[MAP_GOOD] / total_gps)}%)"),
-        (MAP_HEX[MAP_PARTIAL], f"{PARTIAL_FROM}–{GOOD_FROM - 1}% ({round(100 * counts[MAP_PARTIAL] / total_gps)}%)"),
-        (MAP_HEX[MAP_LOW], f"<{PARTIAL_FROM}% ({round(100 * counts[MAP_LOW] / total_gps)}%)"),
-    ])
-    map_state = st_folium(
-        m, use_container_width=True, height=MAP_HEIGHT, key="meds_folium_map",
-        center=view["center"], zoom=view["zoom"],  # required for the fit to stick -- see fit_zoom
-        returned_objects=["last_object_clicked"],
-    )
-    clicked = (map_state or {}).get("last_object_clicked")
-    if clicked and gps_sites:
-        best = min(gps_sites, key=lambda s: (s["gps"]["lat"] - clicked["lat"]) ** 2 + (s["gps"]["lon"] - clicked["lng"]) ** 2)
-        st.session_state.meds_site_select = best["site_key"]
+    if not gps_sites:
+        st.info("No health center with GPS matches the current filter.", icon="🗺️")
+    else:
+        points = [{"site_key": s["site_key"], "gps": s["gps"], "tooltip": tooltip(s)} for s in gps_sites]
+        metrics = [
+            map_helpers.build_metric(key, label, [value_of(s["record"]) for s in gps_sites])
+            for key, label, value_of in map_metrics(schema)
+        ]
+        clicked_key = map_helpers.render_map(
+            points, metrics, key="meds_map", height=MAP_HEIGHT, metric_title="Colour markers by",
+        )
+        if clicked_key and clicked_key != st.session_state.meds_site_select:
+            st.session_state.meds_site_select = clicked_key
+            st.rerun()  # redraw the detail panel, which this run already passed
 
     st.divider()
 

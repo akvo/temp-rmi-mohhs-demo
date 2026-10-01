@@ -113,7 +113,14 @@ Meds tab has no ETL script: its shaping happens at fetch time in
   transcribed from summary reports carrying overall scores only, so the panel
   shows an explanatory caption instead for a site with no MIS submission.
 
-### Improvement Plan detail panel
+### Improvement Plan detail panel (removed)
+
+Removed September 2026 at the user's request — the ✨ AI summary and both
+plan tabs. The curated data behind it is untouched in
+`performance_data.json` (`improvement_plan`), so the panel can be restored
+without an ETL re-run. What follows describes what it showed.
+
+#### (historical)
 
 - **Shows**: the selected site's name/score/officers, a one-paragraph
   summary, and two tabs — "Feb 2026 new plan" and "Oct 2025 status" — each

@@ -12,12 +12,12 @@ improvement-plan tracking for the 18 `Register=Y` health centers, from:
     "Performance Trends Line Graph" averages),
   - two Word docs (bundled in raw_sources/): the Feb 2026 assessment of the
     Oct 2025 plan's status, and the new Feb 2026 improvement plan,
-  - the MIS (mohhs-mis.akvotest.org form 1783289494205) for canonical site
+  - the MIS (mohhs.mis.akvo.org form 1783289494205) for canonical site
     names, ids and GPS, with admin_data.geojson centroid fallback where the
     MIS has no GPS on file.
 
 Requires a `.env` in this same folder (see .env.example) with MIS
-credentials, plus network access to mohhs-mis.akvotest.org.
+credentials, plus network access to mohhs.mis.akvo.org.
 
 Run manually: `python3 build_performance_data.py`. Prints a validation
 summary; inspect it before trusting the output.

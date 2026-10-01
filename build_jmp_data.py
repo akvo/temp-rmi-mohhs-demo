@@ -4,7 +4,7 @@ Facility Assessment tab, used when the live MIS fetch (jmp_wash_tab.py, via
 jmp_fetch.py) is unavailable at runtime.
 
 Pulls the already-submitted JMP WASH Facility Assessment records (form
-1783393878133, mohhs-mis.akvotest.org) plus their parent registration data
+1783393878133, mohhs.mis.akvo.org) plus their parent registration data
 (form 1783289494205, for atoll/island names), and computes each facility's
 JMP-2018 "basic / limited / no service" ladder per domain (water,
 sanitation, hygiene, health-care waste, environmental cleaning) using
@@ -16,7 +16,7 @@ wrapper that writes the result to disk.
 
 Requires a `.env` in this same folder (see .env.example), or
 .streamlit/secrets.toml, with MIS credentials, plus network access to
-mohhs-mis.akvotest.org.
+mohhs.mis.akvo.org.
 
 Run manually: `python3 build_jmp_data.py`.
 """
